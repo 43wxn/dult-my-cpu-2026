@@ -75,3 +75,8 @@ add_executable(test_trap_protocol
     ${CORE_SOURCES}
     tests/unit/test_trap_protocol.cpp
 )
+
+add_executable(test_branch_programs
+    ${CORE_SOURCES}
+    tests/unit/test_branch_programs.cpp
+)

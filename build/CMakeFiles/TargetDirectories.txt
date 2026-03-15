@@ -10,5 +10,6 @@
 /home/tian/architecture/build/CMakeFiles/test_program_loader.dir
 /home/tian/architecture/build/CMakeFiles/test_runtime_protocol.dir
 /home/tian/architecture/build/CMakeFiles/test_trap_protocol.dir
+/home/tian/architecture/build/CMakeFiles/test_branch_programs.dir
 /home/tian/architecture/build/CMakeFiles/edit_cache.dir
 /home/tian/architecture/build/CMakeFiles/rebuild_cache.dir
