@@ -1,101 +1,172 @@
-# dut-LoongArch-VMS
+# dult-my-cpu-2026（LoongArch 教学 CPU 模拟器）
 
-这是一个极简的 LoongArch 架构模拟器示例（CPU + 物理内存 + 简单 MMIO 设备），
-用于演示基本的取指/执行流程以及分页（MMU）地址转换与页错误处理的测试用例。
+这是一个面向课程项目的 **LoongArch 32 位 CPU 模拟器**，目标是用尽量清晰、可扩展的代码实现：
 
-## 目录结构
+- CPU 取指 / 译码 / 执行主循环；
+- 基于总线的内存与 MMIO 设备访问；
+- 运行十六进制/二进制程序镜像并判断测试程序是否“通过”；
+- 用一套轻量测试框架覆盖 CPU、内存、加载器和程序级回归测试。
 
-- `src/` - 源代码实现
-	- `main.cpp` - 测试程序（包含 `test_mmu()`）
-	- `CPU.cpp` - CPU 核心实现（Fetch/Decode/Execute、异常、分页翻译）
-	- `Memory.cpp` - 物理内存设备（按字节存储、支持对齐的 32-bit 访问）
-	- `Bus.cpp` - 简单总线，负责将访问路由到主内存或 MMIO 设备
-	- `Timer.cpp` - 简单可编程定时器 MMIO 设备（支持中断触发）
-	- `Uart.cpp` - 简单 UART（写低 8 位字节到 stdout）
-
-- `include/` - 头文件
-	- `CPU.h`, `Memory.h`, `Bus.h`, `Timer.h`, `Uart.h`, `Device.h`, `decoder.h`
-
-## 项目目标
-
-- 演示最小可用的 CPU 模型与外设交互。
-- 实现并测试分页（一级页目录 + 页表）到物理地址的转换。
-- 提供一个简单的测试用例：把虚拟地址映射到物理地址，写入一条立即数指令（ADDI.W），
-	然后在启用分页后执行取指并验证寄存器结果；还测试对未映射虚拟地址的页故障处理。
-
-## 依赖与环境
-
-- 需要一个支持 C++17 的编译器（例如 `g++` 或 `clang++`）。
-- 在常见 Linux 环境下用以下命令即可构建和运行（无需额外第三方库）。
-
-## 构建（单命令）
-
-在仓库根目录下运行：
-
-```bash
-g++ -std=c++17 -O2 src/*.cpp -I include -o loong-sim
-```
-
-说明：如果你更喜欢使用 `cmake`，可以手动创建简单的 CMakeLists.txt，然后使用常规的 CMake 构建流程。
-
-## 运行测试
-
-构建完成后，运行：
-
-```bash
-./loong-sim
-```
-
-程序将执行 `test_mmu()`：
-
-- 在物理内存中创建页目录和页表，把虚拟地址 `0x12345000` 映射到物理地址 `0x0000A000`。
-- 在物理地址 `0x0000A000` 写入 `ADDI.W r1, r0, 42` 指令。
-- 启用分页（设置 CRMD 的 PG 位）并将 CPU 的 PC 设为虚拟地址 `0x12345000`，执行一次 `cpu.step()`。
-	- 期望 `r1 == 42`（表示取指、地址转换与指令执行都正确）。
-- 然后把 PC 设为未映射的虚拟地址 `0x20000000` 并执行 `cpu.step()`，
-	- 期望 CPU 因页故障跳转到异常入口 `0x1C000200`（由 EXC_ADDR_ERROR 生成）。
-
-示例预期输出（关键片段）：
-
-```
-=== LoongArch MMU / Paging Test ===
-[MMU] Creating Page Directory at physical 0x00100000
-[MMU] Creating Page Table at physical 0x00200000
-[MMU] Mapping Virtual 0x12345000 -> Physical 0x0000A000
-
-[MMU] Executing mapped instruction at VADDR 0x12345000
-[MMU] SUCCESS: Fetched and executed instruction correctly. r1 = 42
-[MMU] PC is now: 0x12345004
-
-[MMU] Testing Page Fault by fetching from unmapped VADDR 0x20000000
-[MMU] After page fault, PC is: 0x1C000200
-[MMU] SUCCESS: Page fault correctly routed to exception handler.
-```
-
-（你的实际输出可能包含更多调试/错误信息，具体依赖于实现完整性。）
-
-## 关键实现要点
-
-- `Memory`：默认大小为 16 MiB（见 `include/Memory.h`），支持对齐的 32-bit 读写并在越界或错位访问时抛出 `std::runtime_error`。
-- `Bus`：将地址路由到内存或 MMIO 设备；MMIO 包括 `Uart`（默认基址 `0x1FE001E0`）和 `Timer`（基址 `0x1FE00100`）。
-- `CPU`：实现了简化的 Fetch/Decode/Execute；包含基本异常处理、CSR（EPC/ESTAT/CRMD/ECFG）以及分页翻译逻辑（`translate_address()`）。
-- `decoder.h`：提供位域提取与常用解码器函数及 opcode 常量，`main.cpp` 中用它来生成测试指令。
-
-## 如何理解 MMU 测试（更详细）
-
-1. 在物理地址 `PD_BASE = 0x0010_0000` 写入 PDE，指向 `PT_BASE = 0x0020_0000`（并置位 Valid 位）。
-2. 在 `PT_BASE + index*4` 写入 PTE，PTE 的物理页基址为 `0x0000_A000`（置位 Valid 位）。
-3. 在物理内存 `0x0000_A000` 写入一条 32-bit 指令（由 `encode_2ri12(OPC2_ADDI_W, 1,0,42)` 生成）。
-4. CPU 启用分页并将 `PGDL` 指向 `PD_BASE`，然后以虚拟地址 `0x12345000` 作为 PC 取指。
-	 - CPU 的 `translate_address()` 会读取 PDE/PTE（通过 `Bus::read32()`）并计算物理地址，然后从物理内存取指。
-5. 如果页表项无效或不存在，CPU 会产生地址异常（页故障），并跳转到异常入口。
-
-## 扩展建议
-
-- 完善指令集支持（`CPU.cpp` 中有很多 opcode 分支仍为骨架或注释省略）。
-- 增加权限检查（读/写/执行位）与更完整的异常分类。
-- 增加更完整的测试套件（多个映射、跨页访问、写保护、TLB 缓存模拟等）。
-- 添加 `CMakeLists.txt` 以支持更方便的构建和单元测试集成（例如使用 `CTest`）。
 ---
 
+## 1. 项目实现了什么功能（CPU 与平台能力）
 
+### 1.1 CPU 核心能力
+
+CPU 以经典单步执行模型运行（`step()`）：
+
+1. 检查中断；
+2. 从 `PC` 取指（支持分页翻译）；
+3. 译码寄存器字段和 opcode；
+4. 执行指令并更新寄存器 / `PC` / CSR；
+5. 维护架构约束（如 `r0` 恒为 0）。
+
+CPU 状态包括：
+
+- 32 个 32-bit 通用寄存器；
+- 程序计数器 `PC`；
+- CSR（如 `CRMD/ESTAT/EPC/ECFG`）；
+- 分页基址寄存器 `PGDL`；
+- 周期计数等运行状态。
+
+同时具备基础异常机制（例如非法指令、地址异常、syscall、外部中断入口跳转等）以及分页地址转换流程。
+
+### 1.2 已支持的典型指令族（精简实现）
+
+当前实现覆盖了课程实验常见的整数与控制流子集，包括：
+
+- 算术/逻辑：`add.w`、`sub.w`、`and/or/xor/nor`、`slt/sltu`、`mul.w`；
+- 移位：寄存器移位 + 部分立即数移位；
+- 分支跳转（用于 `if/else`、循环、数组程序等样例）；
+- 访存相关（配合总线访问内存与外设）。
+
+> 该仓库是“教学可迭代版本”，并非完整 LoongArch ISA 仿真器。
+
+### 1.3 平台与总线（Bus + Memory + MMIO）
+
+平台由 `Bus` 统一路由 32-bit 读写请求：
+
+- 主内存 `Memory`：默认 16 MiB；
+- `Uart`：UART MMIO；
+- `Timer`：定时器 MMIO；
+- `TestDevice`：测试退出设备（关键）。
+
+`TestDevice` 的约定非常重要：
+
+- 向 `0x1FFFF000` 写入值即触发“程序结束”；
+- 写入 `0` 代表 goodtrap（测试通过）；
+- 写入非 0 代表 badtrap（测试失败，值作为退出码）。
+
+### 1.4 程序加载与运行入口
+
+- `ProgramLoader` 支持加载 `.hex` 与 `.bin`；
+- `SimulatorRunner::runHexProgram()` 负责创建整套平台、复位 CPU、加载程序、步进执行，并返回 `RunResult`（是否加载成功、是否停机、退出码、步数）；
+- `src/simulator_main.cpp` 提供命令行入口，可直接跑某个测试程序。
+
+---
+
+## 2. CPU 测试框架说明（如何验证功能）
+
+项目测试分成两层：
+
+### 2.1 轻量单元测试层（`tests/unit`）
+
+项目内置了一个极简测试头 `tests/unit/test_framework.h`，核心宏：
+
+- `EXPECT_TRUE(...)`
+- `EXPECT_EQ(...)`
+- `EXPECT_THROW(...)`
+- `TEST_PASS()`
+
+每个测试文件是独立可执行程序，返回码 `0` 表示通过，非 `0` 表示失败。CMake 会把它们编译成对应二进制（如 `test_cpu_basic`、`test_memory`、`test_mmu` 等）。
+
+覆盖点包括（示例）：
+
+- CPU 基础执行与状态；
+- 内存读写、越界行为；
+- MMU/地址翻译相关行为；
+- ProgramLoader 对 `.hex/.bin` 的加载；
+- Runtime/trap 协议；
+- 分支、load/store、数组等程序级功能。
+
+### 2.2 程序回归层（`tests/program`）
+
+`program_test_runner` 会读取 `tests/program/program_test_manifest.txt`，逐条运行程序并对比期望退出码：
+
+- 样例：`test_pass.hex` / `test_fail.hex` / `trap_pass.hex` / `branch_pass.hex` / `array_pass.hex` 等；
+- 判定条件：
+  1) 程序成功加载；
+  2) 在步数预算内停机；
+  3) `TestDevice` 退出码与清单一致。
+
+这层测试非常适合做“改完 CPU 后的回归验收”。
+
+---
+
+## 3. 如何快速测试（给日常开发的最短路径）
+
+下面是建议的“最快可复现流程”。
+
+### 3.1 一次性构建
+
+在仓库根目录执行：
+
+```bash
+cmake -S . -B build
+cmake --build build -j
+```
+
+### 3.2 30 秒回归（推荐）
+
+先跑程序级回归：
+
+```bash
+./build/program_test_runner
+```
+
+你会看到每个程序的 `[PASS]/[FAIL]` 和最终汇总。
+
+### 3.3 直接跑单个程序（定位问题最方便）
+
+```bash
+./build/mycpu_sim ../programs/test_pass.hex
+./build/mycpu_sim ../programs/branch_fail.hex
+```
+
+- 若输出 `[RESULT] PASS (goodtrap)`，说明程序按预期成功；
+- 若输出 `[RESULT] FAIL (badtrap, code=...)`，可结合退出码快速定位失败类别。
+
+### 3.4 跑关键单元测试（最小集）
+
+```bash
+./build/test_cpu_basic
+./build/test_memory
+./build/test_program_loader
+./build/test_mmu
+```
+
+建议顺序：
+
+1. `test_memory`（先确认底层存储没问题）；
+2. `test_program_loader`（确认镜像加载无误）；
+3. `test_cpu_basic`（确认基础执行路径）；
+4. `program_test_runner`（做整体回归）。
+
+---
+
+## 4. 目录速览
+
+- `src/`：CPU、Bus、Memory、设备、运行器实现；
+- `include/`：公共头文件与平台配置；
+- `tests/unit/`：单元/协议测试；
+- `tests/program/`：程序清单与程序级回归入口；
+- `programs/`：用于回归的 `.hex` 程序样例；
+- `runtime/`：运行时约定说明（goodtrap/badtrap）。
+
+---
+
+## 5. 常见开发建议
+
+- 改指令实现后，优先跑 `program_test_runner` 看是否引入回归；
+- 若某一类程序失败，再用 `mycpu_sim <case.hex>` 单例调试；
+- 若新增程序样例，更新 `tests/program/program_test_manifest.txt` 把它纳入回归。
