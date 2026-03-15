@@ -62,8 +62,8 @@ CMakeFiles/test_runtime_loop.dir/tests/unit/test_runtime_loop.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /home/tian/architecture/include/Uart.h \
  /home/tian/architecture/include/Timer.h \
+ /home/tian/architecture/include/Uart.h \
  /home/tian/architecture/include/TestDevice.h \
  /home/tian/architecture/include/CPU.h \
  /home/tian/architecture/tests/unit/test_framework.h \

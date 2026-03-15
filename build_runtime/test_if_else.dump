@@ -1,0 +1,87 @@
+
+build_runtime/test_if_else.elf:     file format elf32-loongarch
+
+
+Disassembly of section .text:
+
+00001000 <_start>:
+    1000:	140001e3 	lu12i.w     	$sp, 15
+    1004:	54008800 	bl          	136	# 108c <main>
+    1008:	0280000c 	li.w        	$t0, 0
+    100c:	5800088c 	beq         	$a0, $t0, 8	# 1014 <pass_path>
+
+00001010 <fail_path>:
+    1010:	54002400 	bl          	36	# 1034 <badtrap>
+
+00001014 <pass_path>:
+    1014:	54000800 	bl          	8	# 101c <goodtrap>
+
+00001018 <hang>:
+    1018:	50000000 	b           	0	# 1018 <hang>
+
+0000101c <goodtrap>:
+    101c:	02bfc063 	addi.w      	$sp, $sp, -16
+    1020:	29803076 	st.w        	$fp, $sp, 12
+    1024:	02804076 	addi.w      	$fp, $sp, 16
+    1028:	143fffec 	lu12i.w     	$t0, 131071
+    102c:	29800180 	st.w        	$zero, $t0, 0
+    1030:	50000000 	b           	0	# 1030 <goodtrap+0x14>
+
+00001034 <badtrap>:
+    1034:	02bf8063 	addi.w      	$sp, $sp, -32
+    1038:	29807076 	st.w        	$fp, $sp, 28
+    103c:	02808076 	addi.w      	$fp, $sp, 32
+    1040:	29bfb2c4 	st.w        	$a0, $fp, -20
+    1044:	143fffec 	lu12i.w     	$t0, 131071
+    1048:	28bfb2cd 	ld.w        	$t1, $fp, -20
+    104c:	2980018d 	st.w        	$t1, $t0, 0
+    1050:	50000000 	b           	0	# 1050 <badtrap+0x1c>
+
+00001054 <check>:
+    1054:	02bf8063 	addi.w      	$sp, $sp, -32
+    1058:	29807061 	st.w        	$ra, $sp, 28
+    105c:	29806076 	st.w        	$fp, $sp, 24
+    1060:	02808076 	addi.w      	$fp, $sp, 32
+    1064:	29bfb2c4 	st.w        	$a0, $fp, -20
+    1068:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    106c:	44000d80 	bnez        	$t0, 12	# 1078 <check+0x24>
+    1070:	02800404 	li.w        	$a0, 1
+    1074:	57ffc3ff 	bl          	-64	# 1034 <badtrap>
+    1078:	03400000 	nop
+    107c:	28807061 	ld.w        	$ra, $sp, 28
+    1080:	28806076 	ld.w        	$fp, $sp, 24
+    1084:	02808063 	addi.w      	$sp, $sp, 32
+    1088:	4c000020 	ret
+
+0000108c <main>:
+    108c:	02bf8063 	addi.w      	$sp, $sp, -32
+    1090:	29807061 	st.w        	$ra, $sp, 28
+    1094:	29806076 	st.w        	$fp, $sp, 24
+    1098:	02808076 	addi.w      	$fp, $sp, 32
+    109c:	02801c0c 	li.w        	$t0, 7
+    10a0:	29bfa2cc 	st.w        	$t0, $fp, -24
+    10a4:	02800c0c 	li.w        	$t0, 3
+    10a8:	29bf92cc 	st.w        	$t0, $fp, -28
+    10ac:	28bfa2cd 	ld.w        	$t1, $fp, -24
+    10b0:	28bf92cc 	ld.w        	$t0, $fp, -28
+    10b4:	6400118d 	bge         	$t0, $t1, 16	# 10c4 <main+0x38>
+    10b8:	0280040c 	li.w        	$t0, 1
+    10bc:	29bfb2cc 	st.w        	$t0, $fp, -20
+    10c0:	50000c00 	b           	12	# 10cc <main+0x40>
+    10c4:	0280080c 	li.w        	$t0, 2
+    10c8:	29bfb2cc 	st.w        	$t0, $fp, -20
+    10cc:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    10d0:	03c0058c 	xori        	$t0, $t0, 0x1
+    10d4:	0011300d 	sub.w       	$t1, $zero, $t0
+    10d8:	001531ac 	or          	$t0, $t1, $t0
+    10dc:	0014300c 	nor         	$t0, $zero, $t0
+    10e0:	0044fd8c 	srli.w      	$t0, $t0, 0x1f
+    10e4:	0067818c 	bstrpick.w  	$t0, $t0, 0x7, 0x0
+    10e8:	00150184 	move        	$a0, $t0
+    10ec:	57ff6bff 	bl          	-152	# 1054 <check>
+    10f0:	0015000c 	move        	$t0, $zero
+    10f4:	00150184 	move        	$a0, $t0
+    10f8:	28807061 	ld.w        	$ra, $sp, 28
+    10fc:	28806076 	ld.w        	$fp, $sp, 24
+    1100:	02808063 	addi.w      	$sp, $sp, 32
+    1104:	4c000020 	ret

@@ -2,3 +2,8 @@
 test_main           programs/test_main.c            0
 test_fail_main      programs/test_fail_main.c       2
 test_check_fail     programs/test_check_fail.c      1
+test_add            programs/test_add.c             0
+test_if_else        programs/test_if_else.c         0
+test_fact           programs/test_fact.c            0
+test_fib            programs/test_fib.c             0
+

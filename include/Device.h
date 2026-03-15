@@ -25,14 +25,14 @@ namespace loongarch
  */
 class Device
 {
-public:
+  public:
     Device() = default;
     virtual ~Device() = default;
 
-    Device(const Device&) = delete;
-    Device& operator=(const Device&) = delete;
-    Device(Device&&) = default;
-    Device& operator=(Device&&) = default;
+    Device(const Device &) = delete;
+    Device &operator=(const Device &) = delete;
+    Device(Device &&) = default;
+    Device &operator=(Device &&) = default;
 
     /**
      * @brief Read a 32-bit little-endian value from the device.
@@ -58,4 +58,3 @@ public:
 };
 
 } // namespace loongarch
-

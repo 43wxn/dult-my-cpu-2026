@@ -4,18 +4,20 @@
 #include <cstdint>
 #include <string>
 
-namespace loongarch {
+namespace loongarch
+{
 
-class ProgramLoader {
-public:
-    explicit ProgramLoader(Memory& memory) noexcept;
+class ProgramLoader
+{
+  public:
+    explicit ProgramLoader(Memory &memory) noexcept;
 
-    std::uint32_t loadHexFile(const std::string& path, std::uint32_t load_addr);
-    std::size_t loadBinFile(const std::string& path, std::uint32_t load_addr);
-    std::size_t loadFileAuto(const std::string& path, std::uint32_t load_addr);
+    std::uint32_t loadHexFile(const std::string &path, std::uint32_t load_addr);
+    std::size_t loadBinFile(const std::string &path, std::uint32_t load_addr);
+    std::size_t loadFileAuto(const std::string &path, std::uint32_t load_addr);
 
-private:
-    Memory& m_memory;
+  private:
+    Memory &m_memory;
 };
 
 } // namespace loongarch

@@ -1,0 +1,255 @@
+
+build_runtime/quick-sort.elf:     file format elf32-loongarch
+
+
+Disassembly of section .text:
+
+00001000 <_start>:
+    1000:	140001e3 	lu12i.w     	$sp, 15
+    1004:	54024400 	bl          	580	# 1248 <main>
+    1008:	0280000c 	li.w        	$t0, 0
+    100c:	5800088c 	beq         	$a0, $t0, 8	# 1014 <pass_path>
+
+00001010 <fail_path>:
+    1010:	54002400 	bl          	36	# 1034 <badtrap>
+
+00001014 <pass_path>:
+    1014:	54000800 	bl          	8	# 101c <goodtrap>
+
+00001018 <hang>:
+    1018:	50000000 	b           	0	# 1018 <hang>
+
+0000101c <goodtrap>:
+    101c:	02bfc063 	addi.w      	$sp, $sp, -16
+    1020:	29803076 	st.w        	$fp, $sp, 12
+    1024:	02804076 	addi.w      	$fp, $sp, 16
+    1028:	143fffec 	lu12i.w     	$t0, 131071
+    102c:	29800180 	st.w        	$zero, $t0, 0
+    1030:	50000000 	b           	0	# 1030 <goodtrap+0x14>
+
+00001034 <badtrap>:
+    1034:	02bf8063 	addi.w      	$sp, $sp, -32
+    1038:	29807076 	st.w        	$fp, $sp, 28
+    103c:	02808076 	addi.w      	$fp, $sp, 32
+    1040:	29bfb2c4 	st.w        	$a0, $fp, -20
+    1044:	143fffec 	lu12i.w     	$t0, 131071
+    1048:	28bfb2cd 	ld.w        	$t1, $fp, -20
+    104c:	2980018d 	st.w        	$t1, $t0, 0
+    1050:	50000000 	b           	0	# 1050 <badtrap+0x1c>
+
+00001054 <check>:
+    1054:	02bf8063 	addi.w      	$sp, $sp, -32
+    1058:	29807061 	st.w        	$ra, $sp, 28
+    105c:	29806076 	st.w        	$fp, $sp, 24
+    1060:	02808076 	addi.w      	$fp, $sp, 32
+    1064:	29bfb2c4 	st.w        	$a0, $fp, -20
+    1068:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    106c:	44000d80 	bnez        	$t0, 12	# 1078 <check+0x24>
+    1070:	02800404 	li.w        	$a0, 1
+    1074:	57ffc3ff 	bl          	-64	# 1034 <badtrap>
+    1078:	03400000 	nop
+    107c:	28807061 	ld.w        	$ra, $sp, 28
+    1080:	28806076 	ld.w        	$fp, $sp, 24
+    1084:	02808063 	addi.w      	$sp, $sp, 32
+    1088:	4c000020 	ret
+
+0000108c <partition>:
+    108c:	02bf4063 	addi.w      	$sp, $sp, -48
+    1090:	2980b076 	st.w        	$fp, $sp, 44
+    1094:	0280c076 	addi.w      	$fp, $sp, 48
+    1098:	29bf72c4 	st.w        	$a0, $fp, -36
+    109c:	29bf62c5 	st.w        	$a1, $fp, -40
+    10a0:	29bf52c6 	st.w        	$a2, $fp, -44
+    10a4:	28bf62cc 	ld.w        	$t0, $fp, -40
+    10a8:	0040898c 	slli.w      	$t0, $t0, 0x2
+    10ac:	28bf72cd 	ld.w        	$t1, $fp, -36
+    10b0:	001031ac 	add.w       	$t0, $t1, $t0
+    10b4:	2880018c 	ld.w        	$t0, $t0, 0
+    10b8:	29bf92cc 	st.w        	$t0, $fp, -28
+    10bc:	28bf62cc 	ld.w        	$t0, $fp, -40
+    10c0:	29bfb2cc 	st.w        	$t0, $fp, -20
+    10c4:	28bf52cc 	ld.w        	$t0, $fp, -44
+    10c8:	29bfa2cc 	st.w        	$t0, $fp, -24
+    10cc:	5000c000 	b           	192	# 118c <partition+0x100>
+    10d0:	28bfa2cc 	ld.w        	$t0, $fp, -24
+    10d4:	02bffd8c 	addi.w      	$t0, $t0, -1
+    10d8:	29bfa2cc 	st.w        	$t0, $fp, -24
+    10dc:	28bfb2cd 	ld.w        	$t1, $fp, -20
+    10e0:	28bfa2cc 	ld.w        	$t0, $fp, -24
+    10e4:	640021ac 	bge         	$t1, $t0, 32	# 1104 <partition+0x78>
+    10e8:	28bfa2cc 	ld.w        	$t0, $fp, -24
+    10ec:	0040898c 	slli.w      	$t0, $t0, 0x2
+    10f0:	28bf72cd 	ld.w        	$t1, $fp, -36
+    10f4:	001031ac 	add.w       	$t0, $t1, $t0
+    10f8:	2880018c 	ld.w        	$t0, $t0, 0
+    10fc:	28bf92cd 	ld.w        	$t1, $fp, -28
+    1100:	63ffd1ac 	blt         	$t1, $t0, -48	# 10d0 <partition+0x44>
+    1104:	28bfa2cc 	ld.w        	$t0, $fp, -24
+    1108:	0040898c 	slli.w      	$t0, $t0, 0x2
+    110c:	28bf72cd 	ld.w        	$t1, $fp, -36
+    1110:	001031ad 	add.w       	$t1, $t1, $t0
+    1114:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1118:	0040898c 	slli.w      	$t0, $t0, 0x2
+    111c:	28bf72ce 	ld.w        	$t2, $fp, -36
+    1120:	001031cc 	add.w       	$t0, $t2, $t0
+    1124:	288001ad 	ld.w        	$t1, $t1, 0
+    1128:	2980018d 	st.w        	$t1, $t0, 0
+    112c:	50001000 	b           	16	# 113c <partition+0xb0>
+    1130:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1134:	0280058c 	addi.w      	$t0, $t0, 1
+    1138:	29bfb2cc 	st.w        	$t0, $fp, -20
+    113c:	28bfb2cd 	ld.w        	$t1, $fp, -20
+    1140:	28bfa2cc 	ld.w        	$t0, $fp, -24
+    1144:	640021ac 	bge         	$t1, $t0, 32	# 1164 <partition+0xd8>
+    1148:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    114c:	0040898c 	slli.w      	$t0, $t0, 0x2
+    1150:	28bf72cd 	ld.w        	$t1, $fp, -36
+    1154:	001031ac 	add.w       	$t0, $t1, $t0
+    1158:	2880018c 	ld.w        	$t0, $t0, 0
+    115c:	28bf92cd 	ld.w        	$t1, $fp, -28
+    1160:	67ffd1ac 	bge         	$t1, $t0, -48	# 1130 <partition+0xa4>
+    1164:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1168:	0040898c 	slli.w      	$t0, $t0, 0x2
+    116c:	28bf72cd 	ld.w        	$t1, $fp, -36
+    1170:	001031ad 	add.w       	$t1, $t1, $t0
+    1174:	28bfa2cc 	ld.w        	$t0, $fp, -24
+    1178:	0040898c 	slli.w      	$t0, $t0, 0x2
+    117c:	28bf72ce 	ld.w        	$t2, $fp, -36
+    1180:	001031cc 	add.w       	$t0, $t2, $t0
+    1184:	288001ad 	ld.w        	$t1, $t1, 0
+    1188:	2980018d 	st.w        	$t1, $t0, 0
+    118c:	28bfb2cd 	ld.w        	$t1, $fp, -20
+    1190:	28bfa2cc 	ld.w        	$t0, $fp, -24
+    1194:	63ff49ac 	blt         	$t1, $t0, -184	# 10dc <partition+0x50>
+    1198:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    119c:	0040898c 	slli.w      	$t0, $t0, 0x2
+    11a0:	28bf72cd 	ld.w        	$t1, $fp, -36
+    11a4:	001031ac 	add.w       	$t0, $t1, $t0
+    11a8:	28bf92cd 	ld.w        	$t1, $fp, -28
+    11ac:	2980018d 	st.w        	$t1, $t0, 0
+    11b0:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    11b4:	00150184 	move        	$a0, $t0
+    11b8:	2880b076 	ld.w        	$fp, $sp, 44
+    11bc:	0280c063 	addi.w      	$sp, $sp, 48
+    11c0:	4c000020 	ret
+
+000011c4 <quick_sort>:
+    11c4:	02bf4063 	addi.w      	$sp, $sp, -48
+    11c8:	2980b061 	st.w        	$ra, $sp, 44
+    11cc:	2980a076 	st.w        	$fp, $sp, 40
+    11d0:	0280c076 	addi.w      	$fp, $sp, 48
+    11d4:	29bf72c4 	st.w        	$a0, $fp, -36
+    11d8:	29bf62c5 	st.w        	$a1, $fp, -40
+    11dc:	29bf52c6 	st.w        	$a2, $fp, -44
+    11e0:	28bf62cd 	ld.w        	$t1, $fp, -40
+    11e4:	28bf52cc 	ld.w        	$t0, $fp, -44
+    11e8:	64004dac 	bge         	$t1, $t0, 76	# 1234 <quick_sort+0x70>
+    11ec:	28bf52c6 	ld.w        	$a2, $fp, -44
+    11f0:	28bf62c5 	ld.w        	$a1, $fp, -40
+    11f4:	28bf72c4 	ld.w        	$a0, $fp, -36
+    11f8:	57fe97ff 	bl          	-364	# 108c <partition>
+    11fc:	29bfb2c4 	st.w        	$a0, $fp, -20
+    1200:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1204:	02bffd8c 	addi.w      	$t0, $t0, -1
+    1208:	00150186 	move        	$a2, $t0
+    120c:	28bf62c5 	ld.w        	$a1, $fp, -40
+    1210:	28bf72c4 	ld.w        	$a0, $fp, -36
+    1214:	57ffb3ff 	bl          	-80	# 11c4 <quick_sort>
+    1218:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    121c:	0280058c 	addi.w      	$t0, $t0, 1
+    1220:	28bf52c6 	ld.w        	$a2, $fp, -44
+    1224:	00150185 	move        	$a1, $t0
+    1228:	28bf72c4 	ld.w        	$a0, $fp, -36
+    122c:	57ff9bff 	bl          	-104	# 11c4 <quick_sort>
+    1230:	50000800 	b           	8	# 1238 <quick_sort+0x74>
+    1234:	03400000 	nop
+    1238:	2880b061 	ld.w        	$ra, $sp, 44
+    123c:	2880a076 	ld.w        	$fp, $sp, 40
+    1240:	0280c063 	addi.w      	$sp, $sp, 48
+    1244:	4c000020 	ret
+
+00001248 <main>:
+    1248:	02bf8063 	addi.w      	$sp, $sp, -32
+    124c:	29807061 	st.w        	$ra, $sp, 28
+    1250:	29806076 	st.w        	$fp, $sp, 24
+    1254:	02808076 	addi.w      	$fp, $sp, 32
+    1258:	02804c06 	li.w        	$a2, 19
+    125c:	00150005 	move        	$a1, $zero
+    1260:	1c000004 	pcaddu12i   	$a0, 0
+    1264:	0284f084 	addi.w      	$a0, $a0, 316
+    1268:	57ff5fff 	bl          	-164	# 11c4 <quick_sort>
+    126c:	29bfb2c0 	st.w        	$zero, $fp, -20
+    1270:	50004c00 	b           	76	# 12bc <main+0x74>
+    1274:	1c00000d 	pcaddu12i   	$t1, 0
+    1278:	0284a1ad 	addi.w      	$t1, $t1, 296
+    127c:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1280:	0040898c 	slli.w      	$t0, $t0, 0x2
+    1284:	001031ac 	add.w       	$t0, $t1, $t0
+    1288:	2880018d 	ld.w        	$t1, $t0, 0
+    128c:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1290:	0015b1ac 	xor         	$t0, $t1, $t0
+    1294:	0011300d 	sub.w       	$t1, $zero, $t0
+    1298:	001531ac 	or          	$t0, $t1, $t0
+    129c:	0014300c 	nor         	$t0, $zero, $t0
+    12a0:	0044fd8c 	srli.w      	$t0, $t0, 0x1f
+    12a4:	0067818c 	bstrpick.w  	$t0, $t0, 0x7, 0x0
+    12a8:	00150184 	move        	$a0, $t0
+    12ac:	57fdabff 	bl          	-600	# 1054 <check>
+    12b0:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    12b4:	0280058c 	addi.w      	$t0, $t0, 1
+    12b8:	29bfb2cc 	st.w        	$t0, $fp, -20
+    12bc:	28bfb2cd 	ld.w        	$t1, $fp, -20
+    12c0:	02804c0c 	li.w        	$t0, 19
+    12c4:	67ffb18d 	bge         	$t0, $t1, -80	# 1274 <main+0x2c>
+    12c8:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    12cc:	03c0518c 	xori        	$t0, $t0, 0x14
+    12d0:	0011300d 	sub.w       	$t1, $zero, $t0
+    12d4:	001531ac 	or          	$t0, $t1, $t0
+    12d8:	0014300c 	nor         	$t0, $zero, $t0
+    12dc:	0044fd8c 	srli.w      	$t0, $t0, 0x1f
+    12e0:	0067818c 	bstrpick.w  	$t0, $t0, 0x7, 0x0
+    12e4:	00150184 	move        	$a0, $t0
+    12e8:	57fd6fff 	bl          	-660	# 1054 <check>
+    12ec:	02804c06 	li.w        	$a2, 19
+    12f0:	00150005 	move        	$a1, $zero
+    12f4:	1c000004 	pcaddu12i   	$a0, 0
+    12f8:	0282a084 	addi.w      	$a0, $a0, 168
+    12fc:	57fecbff 	bl          	-312	# 11c4 <quick_sort>
+    1300:	29bfb2c0 	st.w        	$zero, $fp, -20
+    1304:	50004c00 	b           	76	# 1350 <main+0x108>
+    1308:	1c00000d 	pcaddu12i   	$t1, 0
+    130c:	028251ad 	addi.w      	$t1, $t1, 148
+    1310:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1314:	0040898c 	slli.w      	$t0, $t0, 0x2
+    1318:	001031ac 	add.w       	$t0, $t1, $t0
+    131c:	2880018d 	ld.w        	$t1, $t0, 0
+    1320:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1324:	0015b1ac 	xor         	$t0, $t1, $t0
+    1328:	0011300d 	sub.w       	$t1, $zero, $t0
+    132c:	001531ac 	or          	$t0, $t1, $t0
+    1330:	0014300c 	nor         	$t0, $zero, $t0
+    1334:	0044fd8c 	srli.w      	$t0, $t0, 0x1f
+    1338:	0067818c 	bstrpick.w  	$t0, $t0, 0x7, 0x0
+    133c:	00150184 	move        	$a0, $t0
+    1340:	57fd17ff 	bl          	-748	# 1054 <check>
+    1344:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1348:	0280058c 	addi.w      	$t0, $t0, 1
+    134c:	29bfb2cc 	st.w        	$t0, $fp, -20
+    1350:	28bfb2cd 	ld.w        	$t1, $fp, -20
+    1354:	02804c0c 	li.w        	$t0, 19
+    1358:	67ffb18d 	bge         	$t0, $t1, -80	# 1308 <main+0xc0>
+    135c:	28bfb2cc 	ld.w        	$t0, $fp, -20
+    1360:	03c0518c 	xori        	$t0, $t0, 0x14
+    1364:	0011300d 	sub.w       	$t1, $zero, $t0
+    1368:	001531ac 	or          	$t0, $t1, $t0
+    136c:	0014300c 	nor         	$t0, $zero, $t0
+    1370:	0044fd8c 	srli.w      	$t0, $t0, 0x1f
+    1374:	0067818c 	bstrpick.w  	$t0, $t0, 0x7, 0x0
+    1378:	00150184 	move        	$a0, $t0
+    137c:	57fcdbff 	bl          	-808	# 1054 <check>
+    1380:	0015000c 	move        	$t0, $zero
+    1384:	00150184 	move        	$a0, $t0
+    1388:	28807061 	ld.w        	$ra, $sp, 28
+    138c:	28806076 	ld.w        	$fp, $sp, 24
+    1390:	02808063 	addi.w      	$sp, $sp, 32
+    1394:	4c000020 	ret

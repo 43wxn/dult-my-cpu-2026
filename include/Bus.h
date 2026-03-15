@@ -11,11 +11,11 @@
 
 #include "Device.h"
 #include "Memory.h"
-#include "Uart.h"
 #include "Timer.h"
+#include "Uart.h"
 
-#include <cstdint>
 #include <TestDevice.h>
+#include <cstdint>
 
 namespace loongarch
 {
@@ -32,24 +32,23 @@ namespace loongarch
  */
 class Bus final : public Device
 {
-public:
-    Bus(Memory& memory, Uart& uart, Timer& timer, TestDevice& testDevice) noexcept;
+  public:
+    Bus(Memory &memory, Uart &uart, Timer &timer, TestDevice &testDevice) noexcept;
     ~Bus() override = default;
 
-    Bus(const Bus&) = delete;
-    Bus& operator=(const Bus&) = delete;
-    Bus(Bus&&) = default;
-    Bus& operator=(Bus&&) = default;
+    Bus(const Bus &) = delete;
+    Bus &operator=(const Bus &) = delete;
+    Bus(Bus &&) = default;
+    Bus &operator=(Bus &&) = default;
 
     [[nodiscard]] std::uint32_t read32(std::uint32_t addr) override;
     void write32(std::uint32_t addr, std::uint32_t value) override;
 
-private:
-    Memory& m_memory;
-    Uart&   m_uart;
-    Timer&  m_timer;
-    TestDevice& m_test_device;
+  private:
+    Memory &m_memory;
+    Uart &m_uart;
+    Timer &m_timer;
+    TestDevice &m_test_device;
 };
 
 } // namespace loongarch
-

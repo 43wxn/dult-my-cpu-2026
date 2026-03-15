@@ -11,14 +11,19 @@
 
 #include "Device.h"
 
-#include <cstdint>
 #include <cstddef>
+#include <cstdint>
 
 namespace loongarch
 {
 
 // 标志位枚举
-enum class AccessType { FETCH, LOAD, STORE };
+enum class AccessType
+{
+    FETCH,
+    LOAD,
+    STORE
+};
 
 /**
  * @brief Minimal LoongArch CPU core.
@@ -33,7 +38,7 @@ enum class AccessType { FETCH, LOAD, STORE };
  */
 class CPU
 {
-public:
+  public:
     /**
      * @brief Construct a CPU core bound to a bus device.
      *
@@ -41,18 +46,18 @@ public:
      *        The caller must ensure the lifetime of @p bus exceeds that
      *        of the CPU instance.
      */
-    explicit CPU(Device& bus) noexcept;
+    explicit CPU(Device &bus) noexcept;
 
-    CPU(const CPU&) = delete;
-    CPU& operator=(const CPU&) = delete;
-    CPU(CPU&&) = default;
-    CPU& operator=(CPU&&) = default;
+    CPU(const CPU &) = delete;
+    CPU &operator=(const CPU &) = delete;
+    CPU(CPU &&) = default;
+    CPU &operator=(CPU &&) = default;
 
     /// @return Reference to the underlying bus device.
-    [[nodiscard]] Device& bus() noexcept;
+    [[nodiscard]] Device &bus() noexcept;
 
     /// @return Const reference to the underlying bus device.
-    [[nodiscard]] const Device& bus() const noexcept;
+    [[nodiscard]] const Device &bus() const noexcept;
 
     /// @return Current program counter value.
     [[nodiscard]] std::uint32_t getPC() const noexcept;
@@ -61,16 +66,28 @@ public:
     void setPC(std::uint32_t newPc) noexcept;
 
     /// @return Pointer to the internal GPR array (size 32).
-    [[nodiscard]] const std::uint32_t* registers() const noexcept;
+    [[nodiscard]] const std::uint32_t *registers() const noexcept;
 
     // Test accessors for CSRs
-    void setCRMD(std::uint32_t value) noexcept { m_crmd = value; }
-    [[nodiscard]] std::uint32_t getCRMD() const noexcept { return m_crmd; }
+    void setCRMD(std::uint32_t value) noexcept
+    {
+        m_crmd = value;
+    }
+    [[nodiscard]] std::uint32_t getCRMD() const noexcept
+    {
+        return m_crmd;
+    }
 
-    void setPGDL(std::uint32_t value) noexcept { m_pgdl = value; }
-    [[nodiscard]] std::uint32_t getPGDL() const noexcept { return m_pgdl; }
+    void setPGDL(std::uint32_t value) noexcept
+    {
+        m_pgdl = value;
+    }
+    [[nodiscard]] std::uint32_t getPGDL() const noexcept
+    {
+        return m_pgdl;
+    }
 
-        /// Read a single general-purpose register for testing/debugging.
+    /// Read a single general-purpose register for testing/debugging.
     [[nodiscard]] std::uint32_t getReg(std::size_t index) const noexcept;
 
     /// Write a single general-purpose register for testing/debugging.
@@ -122,8 +139,8 @@ public:
      */
     void signalInterrupt(std::uint32_t code) noexcept;
 
-private:
-    Device&      m_bus;
+  private:
+    Device &m_bus;
     std::uint32_t m_regs[32]{};
     std::uint32_t m_pc{0};
 
@@ -134,11 +151,11 @@ private:
     // ECFG  : 中断使能配置（预留）
     std::uint32_t m_epc{0};
     std::uint32_t m_estat{0};
-    std::uint32_t m_crmd{1};   // 默认使能中断 (IE=1)
+    std::uint32_t m_crmd{1};            // 默认使能中断 (IE=1)
     std::uint32_t m_ecfg{0xFFFF'FFFFu}; // 默认全部中断源使能
-    
+
     // 外部中断信号
-    bool          m_interrupt_pending{false};
+    bool m_interrupt_pending{false};
     std::uint32_t m_interrupt_code{0};
 
     // 内部寄存器：一级页表物理基地址

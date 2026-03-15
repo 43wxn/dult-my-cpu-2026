@@ -140,20 +140,124 @@ void CPU::step()
     // ============================
 
     try {
+        if (curr_pc == 0x10c8u || curr_pc == 0x10dcu || curr_pc == 0x10e0u ||
+    curr_pc == 0x10e4u || curr_pc == 0x1114u || curr_pc == 0x1118u) {
+    std::cerr << "[DBG FIB] pc=0x" << std::hex << curr_pc
+              << " a0=0x" << get_reg(m_regs, 4u)
+              << " t0=0x" << get_reg(m_regs, 12u)
+              << " t1=0x" << get_reg(m_regs, 13u)
+              << " s0=0x" << get_reg(m_regs, 23u)
+              << " sp=0x" << get_reg(m_regs, 3u)
+              << " ra=0x" << get_reg(m_regs, 1u)
+              << std::dec << "\n";
+        }
+            // Shift-immediate: SRLI.W
+    // Example from compiler output:
+    //   0044fd8c    srli.w $t0, $t0, 0x1f
+        const std::uint32_t op17 = extract_bits(instr, 15u, 17u);
+        if (op17 == 0x89) {
+            const std::uint32_t shamt = extract_bits(instr, 10u, 5u);
+            const std::uint32_t src   = get_reg(m_regs, rj);
+
+            set_reg(m_regs, rd, src >> shamt);
+
+            enforceInvariants();
+            ++m_cycle_count;
+            return;
+        }
+    
+    // Bit-string pick: BSTRPICK.W
+    // Example from compiler output:
+    //   0067818c    bstrpick.w $t0, $t0, 0x7, 0x0
+    //
+    // Semantics:
+    //   rd = (rj >> lsbw) & ((1u << (msbw - lsbw + 1)) - 1)
+    //
+    // We match it before the normal opc3/opc12/opc6 decoding blocks.
+    /*
+        if (op17 == 0x33) {
+            const std::uint32_t lsbw = extract_bits(instr, 10u, 5u);
+            const std::uint32_t msbw = extract_bits(instr, 16u, 5u);
+
+            if (msbw < lsbw || msbw >= 32u) {
+                m_pc = curr_pc + 4U;
+                raise_exception(EXC_ILLEGAL_INSTR);
+                enforceInvariants();
+                return;
+            }
+
+            const std::uint32_t src = get_reg(m_regs, rj);
+            const std::uint32_t width = msbw - lsbw + 1u;
+
+            std::uint32_t mask;
+            if (width >= 32u) {
+                mask = 0xFFFF'FFFFu;
+            } else {
+                mask = (1u << width) - 1u;
+            }
+
+            const std::uint32_t result = (src >> lsbw) & mask;
+            set_reg(m_regs, rd, result);
+
+            enforceInvariants();
+            ++m_cycle_count;
+            return;
+        }
+*/
+        // Bit-string pick: BSTRPICK.W
+    // Example compiler output:
+    //   0067818c    bstrpick.w $t0, $t0, 0x7, 0x0
+    //
+    // We match using a fixed high-prefix pattern first, which is enough
+    // for the current compiler-generated code path.
+    {
+        if ((instr & 0xFFC00000u) == 0x00400000u) {
+            const std::uint32_t lsbw = extract_bits(instr, 10u, 5u);
+            const std::uint32_t msbw = extract_bits(instr, 16u, 5u);
+
+            // Only handle the normal word form here.
+            if (msbw >= lsbw && msbw < 32u) {
+                const std::uint32_t src = get_reg(m_regs, rj);
+                const std::uint32_t width = msbw - lsbw + 1u;
+
+                std::uint32_t mask;
+                if (width >= 32u) {
+                    mask = 0xFFFF'FFFFu;
+                } else {
+                    mask = (1u << width) - 1u;
+                }
+
+                const std::uint32_t result = (src >> lsbw) & mask;
+                set_reg(m_regs, rd, result);
+
+                enforceInvariants();
+                ++m_cycle_count;
+                return;
+            }
+        }
+    }
 
     // 3R instructions: ADD.W / SUB.W / AND / OR / NOR / XOR / SLT / SLTU / SLL.W / SRL.W / SRA.W
     if (opc3 == OPC3_ADD_W  || opc3 == OPC3_SUB_W ||
-        opc3 == OPC3_AND    || opc3 == OPC3_OR    ||
-        opc3 == OPC3_XOR    || opc3 == OPC3_NOR   ||
-        opc3 == OPC3_SLT    || opc3 == OPC3_SLTU  ||
-        opc3 == OPC3_SLL_W  || opc3 == OPC3_SRL_W ||
-        opc3 == OPC3_SRA_W) {
+    opc3 == OPC3_AND    || opc3 == OPC3_OR    ||
+    opc3 == OPC3_XOR    || opc3 == OPC3_NOR   ||
+    opc3 == OPC3_SLT    || opc3 == OPC3_SLTU  ||
+    opc3 == OPC3_SLL_W  || opc3 == OPC3_SRL_W ||
+    opc3 == OPC3_SRA_W  || opc3 == OPC3_MUL_W) {
 
         const std::uint32_t lhs = get_reg(m_regs, rj);
         const std::uint32_t rhs = get_reg(m_regs, rk);
 
         std::uint32_t result = 0u;
         switch (opc3) {
+        case OPC3_MUL_W: {
+        const std::int32_t sl = static_cast<std::int32_t>(lhs);
+        const std::int32_t sr = static_cast<std::int32_t>(rhs);
+        const std::int64_t prod =
+        static_cast<std::int64_t>(sl) * static_cast<std::int64_t>(sr);
+        result = static_cast<std::uint32_t>(prod);
+        break;
+        }
         case OPC3_ADD_W:
             // add.w rd, rj, rk
             result = lhs + rhs;
@@ -460,17 +564,28 @@ void CPU::step()
                 take = (lhs != rhs);
                 break;
             case OPC_BLT: {
-                const std::int32_t sl = static_cast<std::int32_t>(lhs);
-                const std::int32_t sr = static_cast<std::int32_t>(rhs);
-                take = (sl < sr);
-                break;
-            }
-            case OPC_BGE: {
-                const std::int32_t sl = static_cast<std::int32_t>(lhs);
-                const std::int32_t sr = static_cast<std::int32_t>(rhs);
-                take = (sl >= sr);
-                break;
-            }
+    const std::int32_t sl =
+        static_cast<std::int32_t>(get_reg(m_regs, rj));
+    const std::int32_t sr =
+        static_cast<std::int32_t>(get_reg(m_regs, rd));
+    take = (sl < sr);
+    std::cerr << "[DBG BLT] pc=0x" << std::hex << curr_pc
+          << " rj=" << std::dec << rj
+          << " rd=" << rd
+          << " lhs=" << static_cast<std::int32_t>(get_reg(m_regs, rj))
+          << " rhs=" << static_cast<std::int32_t>(get_reg(m_regs, rd))
+          << " take=" << take
+          << "\n";
+    break;
+}
+case OPC_BGE: {
+    const std::int32_t sl =
+        static_cast<std::int32_t>(get_reg(m_regs, rj));
+    const std::int32_t sr =
+        static_cast<std::int32_t>(get_reg(m_regs, rd));
+    take = (sl >= sr);
+    break;
+}
             case OPC_BNEZ:
                 take = (lhs != 0u);
                 break;
@@ -492,25 +607,35 @@ void CPU::step()
                         static_cast<std::int32_t>(curr_pc) + offsetBytes);
                 }
             }
-        } else {
+                } else {
             // B / BL : 26-bit immediate, scaled by 4
             const std::uint32_t low10  = extract_bits(instr, 0u, 10u);
             const std::uint32_t high16 = extract_bits(instr, 10u, 16u);
 
-            // LoongArch B/BL immediate layout:
-            // offs[25:16] in bits[9:0], offs[15:0] in bits[25:10]
             const std::uint32_t raw26  = (low10 << 16u) | high16;
-
-            const std::int32_t imm26 =
-                sign_extend<26>(raw26);
+            const std::int32_t imm26   = sign_extend<26>(raw26);
             const std::int32_t offsetBytes = imm26 << 2;
+
+            const std::uint32_t target = static_cast<std::uint32_t>(
+                static_cast<std::int32_t>(curr_pc) + offsetBytes);
+
+            std::cerr << "[DBG B/BL] "
+                      << "pc=0x" << std::hex << curr_pc
+                      << " opc6=0x" << opc6
+                      << " instr=0x" << instr
+                      << " low10=0x" << low10
+                      << " high16=0x" << high16
+                      << " raw26=0x" << raw26
+                      << " imm26=" << std::dec << imm26
+                      << " offsetBytes=" << offsetBytes
+                      << " target=0x" << std::hex << target
+                      << "\n";
 
             if (opc6 == OPC_BL) {
                 set_reg(m_regs, 1u, curr_pc + 4U);
             }
 
-            m_pc = static_cast<std::uint32_t>(
-                static_cast<std::int32_t>(curr_pc) + offsetBytes);
+            m_pc = target;
         }
     }
     else {
@@ -529,6 +654,7 @@ void CPU::step()
     // Enforce architectural invariants after executing the instruction.
     enforceInvariants();
     ++m_cycle_count;
+    
 }
 
 void CPU::enforceInvariants() noexcept

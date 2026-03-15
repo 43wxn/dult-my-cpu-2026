@@ -30,14 +30,14 @@ namespace loongarch
  */
 class Uart final : public Device
 {
-public:
+  public:
     Uart() = default;
     ~Uart() override = default;
 
-    Uart(const Uart&) = delete;
-    Uart& operator=(const Uart&) = delete;
-    Uart(Uart&&) = default;
-    Uart& operator=(Uart&&) = default;
+    Uart(const Uart &) = delete;
+    Uart &operator=(const Uart &) = delete;
+    Uart(Uart &&) = default;
+    Uart &operator=(Uart &&) = default;
 
     /// Fixed physical base address for this UART in the system map.
     /// This uses a more realistic high MMIO address.
@@ -53,4 +53,3 @@ public:
 };
 
 } // namespace loongarch
-

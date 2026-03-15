@@ -2,13 +2,15 @@
 
 #include <stdexcept>
 
-namespace loongarch {
+namespace loongarch
+{
 
 std::uint32_t TestDevice::read32(std::uint32_t addr)
 {
     const std::uint32_t offset = addr - BASE_ADDR;
 
-    switch (offset) {
+    switch (offset)
+    {
     case 0x0:
         return m_exit_code;
     case 0x4:
@@ -22,7 +24,8 @@ void TestDevice::write32(std::uint32_t addr, std::uint32_t value)
 {
     const std::uint32_t offset = addr - BASE_ADDR;
 
-    switch (offset) {
+    switch (offset)
+    {
     case 0x0:
         m_exit_code = value;
         m_halted = true;

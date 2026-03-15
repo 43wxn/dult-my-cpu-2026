@@ -62,8 +62,8 @@ CMakeFiles/test_runtime_halt.dir/src/Bus.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /home/tian/architecture/include/Uart.h \
  /home/tian/architecture/include/Timer.h \
+ /home/tian/architecture/include/Uart.h \
  /home/tian/architecture/include/TestDevice.h \
  /usr/include/c++/13/stdexcept /usr/include/c++/13/exception \
  /usr/include/c++/13/bits/exception_ptr.h \

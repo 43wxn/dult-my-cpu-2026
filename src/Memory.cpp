@@ -11,10 +11,10 @@
 namespace loongarch
 {
 
-Memory::Memory(std::size_t sizeBytes)
-    : m_data()
+Memory::Memory(std::size_t sizeBytes) : m_data()
 {
-    if (sizeBytes == 0U) {
+    if (sizeBytes == 0U)
+    {
         throw std::runtime_error("Memory: sizeBytes must be greater than zero");
     }
 
@@ -55,22 +55,20 @@ void Memory::write32(std::uint32_t addr, std::uint32_t value)
     m_data[base + 3U] = static_cast<std::uint8_t>((value >> 24U) & 0xFFU);
 }
 
-void Memory::checkAlignedAndInRange(std::uint32_t addr,
-                                    std::size_t accessSize) const
+void Memory::checkAlignedAndInRange(std::uint32_t addr, std::size_t accessSize) const
 {
-    if ((addr & 0x3U) != 0U) {
-        throw std::runtime_error(
-            "Memory: unaligned 32-bit access at address 0x" +
-            std::to_string(static_cast<unsigned long long>(addr)));
+    if ((addr & 0x3U) != 0U)
+    {
+        throw std::runtime_error("Memory: unaligned 32-bit access at address 0x" +
+                                 std::to_string(static_cast<unsigned long long>(addr)));
     }
 
     const auto base = static_cast<std::size_t>(addr);
-    if (accessSize == 0U || base > m_data.size() - accessSize) {
-        throw std::runtime_error(
-            "Memory: out-of-range 32-bit access at address 0x" +
-            std::to_string(static_cast<unsigned long long>(addr)));
+    if (accessSize == 0U || base > m_data.size() - accessSize)
+    {
+        throw std::runtime_error("Memory: out-of-range 32-bit access at address 0x" +
+                                 std::to_string(static_cast<unsigned long long>(addr)));
     }
 }
 
 } // namespace loongarch
-

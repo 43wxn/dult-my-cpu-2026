@@ -24,17 +24,17 @@ namespace loongarch
 
 class Timer final : public Device
 {
-public:
+  public:
     Timer() = default;
     ~Timer() override = default;
 
-    Timer(const Timer&) = delete;
-    Timer& operator=(const Timer&) = delete;
-    Timer(Timer&&) = default;
-    Timer& operator=(Timer&&) = default;
+    Timer(const Timer &) = delete;
+    Timer &operator=(const Timer &) = delete;
+    Timer(Timer &&) = default;
+    Timer &operator=(Timer &&) = default;
 
     /// Fixed physical base address in the system MMIO map.
-    static constexpr std::uint32_t PhysicalBase   = 0x1FE0'0100u;
+    static constexpr std::uint32_t PhysicalBase = 0x1FE0'0100u;
     /// Size of the Timer address range in bytes (4 registers × 4 bytes).
     static constexpr std::uint32_t RangeSizeBytes = 16u;
 
@@ -55,11 +55,11 @@ public:
     /// Acknowledge / clear the pending interrupt.
     void clearPending() noexcept;
 
-private:
+  private:
     std::uint64_t m_ticks{0};
-    std::uint32_t m_threshold{0};   // 0 = no automatic interrupt
-    bool          m_enabled{false};
-    bool          m_interruptPending{false};
+    std::uint32_t m_threshold{0}; // 0 = no automatic interrupt
+    bool m_enabled{false};
+    bool m_interruptPending{false};
 };
 
 } // namespace loongarch

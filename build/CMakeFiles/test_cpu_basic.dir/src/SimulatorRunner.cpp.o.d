@@ -2,7 +2,8 @@ CMakeFiles/test_cpu_basic.dir/src/SimulatorRunner.cpp.o: \
  /home/tian/architecture/src/SimulatorRunner.cpp \
  /usr/include/stdc-predef.h \
  /home/tian/architecture/include/SimulatorRunner.h \
- /usr/include/c++/13/cstdint \
+ /home/tian/architecture/include/PlatformConfig.h \
+ /usr/include/c++/13/cstddef \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
@@ -14,6 +15,8 @@ CMakeFiles/test_cpu_basic.dir/src/SimulatorRunner.cpp.o: \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/cpu_defines.h \
  /usr/include/c++/13/pstl/pstl_config.h \
+ /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
+ /usr/include/c++/13/cstdint \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
@@ -30,7 +33,6 @@ CMakeFiles/test_cpu_basic.dir/src/SimulatorRunner.cpp.o: \
  /usr/include/c++/13/bits/postypes.h /usr/include/c++/13/cwchar \
  /usr/include/wchar.h /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
@@ -116,10 +118,9 @@ CMakeFiles/test_cpu_basic.dir/src/SimulatorRunner.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/13/bits/charconv.h \
  /usr/include/c++/13/bits/basic_string.tcc \
- /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
+ /usr/include/c++/13/bits/memory_resource.h \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /home/tian/architecture/include/PlatformConfig.h \
  /home/tian/architecture/include/Bus.h \
  /home/tian/architecture/include/Device.h \
  /home/tian/architecture/include/Memory.h /usr/include/c++/13/vector \
@@ -127,8 +128,8 @@ CMakeFiles/test_cpu_basic.dir/src/SimulatorRunner.cpp.o: \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
- /home/tian/architecture/include/Uart.h \
  /home/tian/architecture/include/Timer.h \
+ /home/tian/architecture/include/Uart.h \
  /home/tian/architecture/include/TestDevice.h \
  /home/tian/architecture/include/CPU.h \
  /home/tian/architecture/include/ProgramLoader.h \
