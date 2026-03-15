@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/tian/architecture/src/Bus.cpp" "CMakeFiles/test_mmu.dir/src/Bus.cpp.o" "gcc" "CMakeFiles/test_mmu.dir/src/Bus.cpp.o.d"
   "/home/tian/architecture/src/CPU.cpp" "CMakeFiles/test_mmu.dir/src/CPU.cpp.o" "gcc" "CMakeFiles/test_mmu.dir/src/CPU.cpp.o.d"
   "/home/tian/architecture/src/Memory.cpp" "CMakeFiles/test_mmu.dir/src/Memory.cpp.o" "gcc" "CMakeFiles/test_mmu.dir/src/Memory.cpp.o.d"
+  "/home/tian/architecture/src/TestDevice.cpp" "CMakeFiles/test_mmu.dir/src/TestDevice.cpp.o" "gcc" "CMakeFiles/test_mmu.dir/src/TestDevice.cpp.o.d"
   "/home/tian/architecture/src/Timer.cpp" "CMakeFiles/test_mmu.dir/src/Timer.cpp.o" "gcc" "CMakeFiles/test_mmu.dir/src/Timer.cpp.o.d"
   "/home/tian/architecture/src/Uart.cpp" "CMakeFiles/test_mmu.dir/src/Uart.cpp.o" "gcc" "CMakeFiles/test_mmu.dir/src/Uart.cpp.o.d"
   "/home/tian/architecture/tests/unit/test_mmu.cpp" "CMakeFiles/test_mmu.dir/tests/unit/test_mmu.cpp.o" "gcc" "CMakeFiles/test_mmu.dir/tests/unit/test_mmu.cpp.o.d"

@@ -41,7 +41,8 @@ void test_mmu()
     Memory memory;
     Uart   uart;
     Timer  timer;
-    Bus    bus(memory, uart, timer);
+    TestDevice testDevice;
+    Bus    bus(memory, uart, timer, testDevice);
     CPU    cpu(bus);
 
     // 1. Setup Page Tables

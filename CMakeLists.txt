@@ -13,6 +13,7 @@ set(CORE_SOURCES
     src/Memory.cpp
     src/Timer.cpp
     src/Uart.cpp
+    src/TestDevice.cpp
 )
 
 add_executable(mycpu_sim
@@ -37,4 +38,14 @@ add_executable(test_mmu
 
 add_executable(program_test_runner
     tests/program/program_test_runner.cpp
+)
+
+add_executable(test_cpu_state
+    ${CORE_SOURCES}
+    tests/unit/test_cpu_state.cpp
+)
+
+add_executable(test_testdevice
+    ${CORE_SOURCES}
+    tests/unit/test_testDevice.cpp
 )

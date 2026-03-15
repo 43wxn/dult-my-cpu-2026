@@ -65,6 +65,7 @@ CMakeFiles/test_mmu.dir/tests/unit/test_mmu.cpp.o: \
  /home/tian/architecture/include/Uart.h \
  /home/tian/architecture/include/Timer.h \
  /home/tian/architecture/include/Bus.h \
+ /home/tian/architecture/include/TestDevice.h \
  /home/tian/architecture/include/CPU.h \
  /home/tian/architecture/include/decoder.h /usr/include/c++/13/cstdio \
  /usr/include/stdio.h /usr/lib/gcc/x86_64-linux-gnu/13/include/stdarg.h \

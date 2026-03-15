@@ -4,5 +4,6 @@
 /home/tian/architecture/build/CMakeFiles/test_mmu.dir
 /home/tian/architecture/build/CMakeFiles/program_test_runner.dir
 /home/tian/architecture/build/CMakeFiles/test_cpu_state.dir
+/home/tian/architecture/build/CMakeFiles/test_testdevice.dir
 /home/tian/architecture/build/CMakeFiles/edit_cache.dir
 /home/tian/architecture/build/CMakeFiles/rebuild_cache.dir

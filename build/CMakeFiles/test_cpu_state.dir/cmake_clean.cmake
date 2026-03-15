@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/test_cpu_state.dir/src/CPU.cpp.o.d"
   "CMakeFiles/test_cpu_state.dir/src/Memory.cpp.o"
   "CMakeFiles/test_cpu_state.dir/src/Memory.cpp.o.d"
+  "CMakeFiles/test_cpu_state.dir/src/TestDevice.cpp.o"
+  "CMakeFiles/test_cpu_state.dir/src/TestDevice.cpp.o.d"
   "CMakeFiles/test_cpu_state.dir/src/Timer.cpp.o"
   "CMakeFiles/test_cpu_state.dir/src/Timer.cpp.o.d"
   "CMakeFiles/test_cpu_state.dir/src/Uart.cpp.o"

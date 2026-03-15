@@ -46,4 +46,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/test_mmu.dir/DependInfo.cmake"
   "CMakeFiles/program_test_runner.dir/DependInfo.cmake"
   "CMakeFiles/test_cpu_state.dir/DependInfo.cmake"
+  "CMakeFiles/test_testdevice.dir/DependInfo.cmake"
   )

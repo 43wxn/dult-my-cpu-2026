@@ -9,7 +9,8 @@ int main() {
     loongarch::Memory mem(16 * 1024 * 1024);
     loongarch::Uart uart;
     loongarch::Timer timer;
-    loongarch::Bus bus(mem, uart, timer);
+    loongarch::TestDevice testDevice;
+    loongarch::Bus bus(mem, uart, timer, testDevice);
     loongarch::CPU cpu(bus);
 
     mem.write32(0x1000, 0x0280A801);

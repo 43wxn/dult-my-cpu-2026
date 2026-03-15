@@ -70,6 +70,29 @@ public:
     void setPGDL(std::uint32_t value) noexcept { m_pgdl = value; }
     [[nodiscard]] std::uint32_t getPGDL() const noexcept { return m_pgdl; }
 
+        /// Read a single general-purpose register for testing/debugging.
+    [[nodiscard]] std::uint32_t getReg(std::size_t index) const noexcept;
+
+    /// Write a single general-purpose register for testing/debugging.
+    /// Register 0 remains hard-wired to zero after invariants are enforced.
+    void setReg(std::size_t index, std::uint32_t value) noexcept;
+
+    /// Reset CPU architectural state.
+    /// - Clears GPRs
+    /// - Sets PC to reset vector
+    /// - Resets CSR state
+    /// - Clears pending interrupts
+    void reset(std::uint32_t resetPc = 0) noexcept;
+
+    /// @return Number of instructions stepped so far.
+    [[nodiscard]] std::uint64_t getCycleCount() const noexcept;
+
+    /// Print all general-purpose registers.
+    void dumpRegisters() const;
+
+    /// Print CPU summary state (PC, CSR, cycles).
+    void dumpState() const;
+
     /**
      * @brief Execute a single instruction.
      *
@@ -129,6 +152,8 @@ private:
 
     // 返回转换后的物理地址。如果发生缺页或权限错误，抛出特定的异常或调用 raise_exception。
     std::uint32_t translate_address(std::uint32_t vaddr, AccessType type);
+
+    std::uint64_t m_cycle_count{0};
 };
 
 } // namespace loongarch

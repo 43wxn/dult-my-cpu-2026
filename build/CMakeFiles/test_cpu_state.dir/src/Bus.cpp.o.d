@@ -63,8 +63,10 @@ CMakeFiles/test_cpu_state.dir/src/Bus.cpp.o: \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
  /home/tian/architecture/include/Uart.h \
- /home/tian/architecture/include/Timer.h /usr/include/c++/13/stdexcept \
- /usr/include/c++/13/exception /usr/include/c++/13/bits/exception_ptr.h \
+ /home/tian/architecture/include/Timer.h \
+ /home/tian/architecture/include/TestDevice.h \
+ /usr/include/c++/13/stdexcept /usr/include/c++/13/exception \
+ /usr/include/c++/13/bits/exception_ptr.h \
  /usr/include/c++/13/bits/cxxabi_init_exception.h \
  /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h \
  /usr/include/c++/13/string /usr/include/c++/13/bits/stringfwd.h \

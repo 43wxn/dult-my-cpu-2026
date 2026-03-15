@@ -6,6 +6,8 @@
 #include "CPU.h"
 #include "decoder.h"
 #include <stdexcept>
+#include <iostream>
+#include <iomanip>
 namespace loongarch
 {
 
@@ -83,6 +85,7 @@ void CPU::step()
         m_interrupt_pending = false;
         raise_exception(m_interrupt_code);
         enforceInvariants();
+        ++m_cycle_count;
         return;
     }
 
@@ -602,6 +605,80 @@ std::uint32_t CPU::translate_address(std::uint32_t vaddr, AccessType type)
 
     std::uint32_t ppn = (pte & 0xFFFFF000u);
     return ppn | offset;
+}
+//getReg
+std::uint32_t CPU::getReg(std::size_t index) const noexcept
+{
+    return (index < 32) ? m_regs[index] : 0;
+}
+//setReg
+void CPU::setReg(std::size_t index, std::uint32_t value) noexcept
+{
+    if (index < 32) {
+        m_regs[index] = value;
+        enforceInvariants();
+    }
+}
+//reset
+void CPU::reset(std::uint32_t resetPc) noexcept
+{
+    for (auto& reg : m_regs) {
+        reg = 0;
+    }
+
+    m_pc = resetPc;
+
+    m_epc   = 0;
+    m_estat = 0;
+    m_crmd  = 1;
+    m_ecfg  = 0xFFFF'FFFFu;
+    m_pgdl  = 0;
+
+    m_interrupt_pending = false;
+    m_interrupt_code    = 0;
+
+    m_cycle_count = 0;
+
+    enforceInvariants();
+}
+//getCycleCount
+std::uint64_t CPU::getCycleCount() const noexcept
+{
+    return m_cycle_count;
+}
+//dumpRegisters
+void CPU::dumpRegisters() const
+{
+    std::ios old_state(nullptr);
+    old_state.copyfmt(std::cout);
+
+    for (std::size_t i = 0; i < 32; ++i) {
+        std::cout << "r" << std::dec << i << " = 0x"
+                  << std::hex << std::setw(8) << std::setfill('0')
+                  << m_regs[i] << '\n';
+    }
+
+    std::cout.copyfmt(old_state);
+}
+//dumpState
+void CPU::dumpState() const
+{
+    std::ios old_state(nullptr);
+    old_state.copyfmt(std::cout);
+
+    std::cout << "PC    = 0x" << std::hex << std::setw(8)
+              << std::setfill('0') << m_pc << '\n';
+    std::cout << "EPC   = 0x" << std::hex << std::setw(8)
+              << std::setfill('0') << m_epc << '\n';
+    std::cout << "ESTAT = 0x" << std::hex << std::setw(8)
+              << std::setfill('0') << m_estat << '\n';
+    std::cout << "CRMD  = 0x" << std::hex << std::setw(8)
+              << std::setfill('0') << m_crmd << '\n';
+    std::cout << "PGDL  = 0x" << std::hex << std::setw(8)
+              << std::setfill('0') << m_pgdl << '\n';
+    std::cout << "cycles= " << std::dec << m_cycle_count << '\n';
+
+    std::cout.copyfmt(old_state);
 }
 
 } // namespace loongarch

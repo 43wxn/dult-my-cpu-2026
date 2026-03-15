@@ -12,10 +12,11 @@
 namespace loongarch
 {
 
-Bus::Bus(Memory& memory, Uart& uart, Timer& timer) noexcept
+Bus::Bus(Memory& memory, Uart& uart, Timer& timer, TestDevice& testDevice) noexcept
     : m_memory{memory}
     , m_uart{uart}
     , m_timer{timer}
+    , m_test_device{testDevice}
 {
 }
 
@@ -38,6 +39,12 @@ std::uint32_t Bus::read32(std::uint32_t addr)
     // Route to main memory if within range.
     if (addr < m_memory.size()) {
         return m_memory.read32(addr);
+    }
+
+    // Route to TestDevice if within range.
+    if (addr >= TestDevice::BASE_ADDR &&
+    addr < TestDevice::BASE_ADDR + TestDevice::SIZE) {
+    return m_test_device.read32(addr);
     }
 
     throw std::runtime_error(
@@ -67,6 +74,13 @@ void Bus::write32(std::uint32_t addr, std::uint32_t value)
     if (addr < m_memory.size()) {
         m_memory.write32(addr, value);
         return;
+    }
+
+    // Route to TestDevice if within range.
+    if (addr >= TestDevice::BASE_ADDR &&
+    addr < TestDevice::BASE_ADDR + TestDevice::SIZE) {
+    m_test_device.write32(addr, value);
+    return;
     }
 
     throw std::runtime_error(
