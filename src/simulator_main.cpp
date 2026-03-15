@@ -1,6 +1,7 @@
 #include "Bus.h"
 #include "CPU.h"
 #include "Memory.h"
+#include "ProgramLoader.h"
 #include "TestDevice.h"
 #include "Timer.h"
 #include "Uart.h"
@@ -8,36 +9,38 @@
 #include <cstdint>
 #include <exception>
 #include <iostream>
+#include <string>
 
 using namespace loongarch;
 
-int main() {
+int main(int argc, char* argv[]) {
     Memory mem(16 * 1024 * 1024);
     Uart uart;
     Timer timer;
     TestDevice testDevice;
     Bus bus(mem, uart, timer, testDevice);
     CPU cpu(bus);
+    ProgramLoader loader(mem);
 
     constexpr std::uint32_t ENTRY = 0x1000;
-    constexpr std::uint64_t MAX_STEPS = 16;
+    constexpr std::uint64_t MAX_STEPS = 32;
+
+    std::string program_path = "../programs/test_exit.hex";
+    if (argc >= 2) {
+        program_path = argv[1];
+    }
 
     cpu.reset(ENTRY);
     testDevice.reset();
 
-    // Program:
-    //   r1 = 0x1FFFF000         (TestDevice base)
-    //   r2 = 0
-    //   *(uint32_t*)r1 = r2     (exit with code 0)
-
-    mem.write32(ENTRY + 0x0, 0x143FFFE1u); // lu12i.w r1, 0x1FFFF
-    mem.write32(ENTRY + 0x4, 0x02800002u); // addi.w  r2, r0, 0
-    mem.write32(ENTRY + 0x8, 0x29800022u); // st.w    r2, r1, 0
-
-    std::cout << "Starting simulation at PC = 0x"
-              << std::hex << ENTRY << std::dec << "\n";
-
     try {
+        const std::uint32_t loaded = loader.loadHexFile(program_path, ENTRY);
+
+        std::cout << "Starting simulation at PC = 0x"
+                  << std::hex << ENTRY << std::dec << "\n";
+        std::cout << "Loaded " << loaded
+                  << " instruction(s) from " << program_path << "\n";
+
         for (std::uint64_t step = 0; step < MAX_STEPS; ++step) {
             cpu.step();
 

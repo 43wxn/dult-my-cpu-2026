@@ -14,6 +14,7 @@ set(CORE_SOURCES
     src/Timer.cpp
     src/Uart.cpp
     src/TestDevice.cpp
+    src/ProgramLoader.cpp
 )
 
 add_executable(mycpu_sim
@@ -58,4 +59,9 @@ add_executable(test_runtime_loop
 add_executable(test_runtime_halt
     ${CORE_SOURCES}
     tests/unit/test_runtime_halt.cpp
+)
+
+add_executable(test_program_loader
+    ${CORE_SOURCES}
+    tests/unit/test_program_loader.cpp
 )

@@ -7,5 +7,6 @@
 /home/tian/architecture/build/CMakeFiles/test_testdevice.dir
 /home/tian/architecture/build/CMakeFiles/test_runtime_loop.dir
 /home/tian/architecture/build/CMakeFiles/test_runtime_halt.dir
+/home/tian/architecture/build/CMakeFiles/test_program_loader.dir
 /home/tian/architecture/build/CMakeFiles/edit_cache.dir
 /home/tian/architecture/build/CMakeFiles/rebuild_cache.dir
