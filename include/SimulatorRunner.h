@@ -2,6 +2,7 @@
 
 #include <cstdint>
 #include <string>
+#include "PlatformConfig.h"
 
 namespace loongarch {
 
@@ -12,9 +13,11 @@ struct RunResult {
     std::uint64_t steps{0};
 };
 
+
+
 RunResult runHexProgram(const std::string& program_path,
-                        std::uint32_t entry = 0x1000,
-                        std::uint64_t max_steps = 64,
+                        std::uint32_t entry = loongarch::PlatformConfig::ENTRY,
+                        std::uint64_t max_steps = loongarch::PlatformConfig::MAX_STEPS,
                         bool trace = false);
 
 } // namespace loongarch

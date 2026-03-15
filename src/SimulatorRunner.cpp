@@ -1,5 +1,5 @@
 #include "SimulatorRunner.h"
-
+#include "PlatformConfig.h"
 #include "Bus.h"
 #include "CPU.h"
 #include "Memory.h"
@@ -18,7 +18,7 @@ RunResult runHexProgram(const std::string& program_path,
                         std::uint64_t max_steps,
                         bool trace)
 {
-    Memory mem(16 * 1024 * 1024);
+    Memory mem(loongarch::PlatformConfig::MEMORY_SIZE);
     Uart uart;
     Timer timer;
     TestDevice testDevice;

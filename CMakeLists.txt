@@ -82,3 +82,13 @@ add_executable(test_branch_programs
     ${CORE_SOURCES}
     tests/unit/test_branch_programs.cpp
 )
+
+add_executable(test_load_store_programs
+    ${CORE_SOURCES}
+    tests/unit/test_load_store_programs.cpp
+)
+
+add_executable(test_array_programs
+    ${CORE_SOURCES}
+    tests/unit/test_array_programs.cpp
+)

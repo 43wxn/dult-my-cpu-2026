@@ -119,6 +119,7 @@ CMakeFiles/test_cpu_basic.dir/src/SimulatorRunner.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
+ /home/tian/architecture/include/PlatformConfig.h \
  /home/tian/architecture/include/Bus.h \
  /home/tian/architecture/include/Device.h \
  /home/tian/architecture/include/Memory.h /usr/include/c++/13/vector \

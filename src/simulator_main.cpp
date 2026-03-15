@@ -1,10 +1,6 @@
 #include "SimulatorRunner.h"
-
-#include <cstdint>
 #include <iostream>
 #include <string>
-
-using namespace loongarch;
 
 int main(int argc, char* argv[]) {
     std::string program_path = "../programs/test_exit.hex";
@@ -12,7 +8,12 @@ int main(int argc, char* argv[]) {
         program_path = argv[1];
     }
 
-    const RunResult result = runHexProgram(program_path, 0x1000, 64, true);
+    const auto result = loongarch::runHexProgram(
+        program_path,
+        loongarch::PlatformConfig::ENTRY,
+        loongarch::PlatformConfig::MAX_STEPS,
+        true
+    );
 
     if (!result.loaded) {
         std::cerr << "Failed to load program: " << program_path << "\n";
