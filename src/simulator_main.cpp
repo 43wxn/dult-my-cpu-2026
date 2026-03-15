@@ -6,12 +6,12 @@
 #include "Uart.h"
 
 #include <cstdint>
+#include <exception>
 #include <iostream>
 
 using namespace loongarch;
 
 int main() {
-    //初始化cpu
     Memory mem(16 * 1024 * 1024);
     Uart uart;
     Timer timer;
@@ -19,15 +19,56 @@ int main() {
     Bus bus(mem, uart, timer, testDevice);
     CPU cpu(bus);
 
-    cpu.reset(0x1000);
-        // 这里先不追求复杂程序，只先验证主循环框架
-    // 后面我们会用真正的程序加载器替换它
+    constexpr std::uint32_t ENTRY = 0x1000;
+    constexpr std::uint64_t MAX_STEPS = 16;
 
-    // TODO:
-    // 这里后面会写入真正的机器码程序
-    // 当前先打印骨架已就绪
+    cpu.reset(ENTRY);
+    testDevice.reset();
 
-    std::cout << "Simulator runtime skeleton ready.\n";
-    std::cout << "TestDevice MMIO base = 0x" << std::hex << TestDevice::BASE_ADDR << "\n";
-    return 0;
+    // Program:
+    //   r1 = 0x1FFFF000         (TestDevice base)
+    //   r2 = 0
+    //   *(uint32_t*)r1 = r2     (exit with code 0)
+
+    mem.write32(ENTRY + 0x0, 0x143FFFE1u); // lu12i.w r1, 0x1FFFF
+    mem.write32(ENTRY + 0x4, 0x02800002u); // addi.w  r2, r0, 0
+    mem.write32(ENTRY + 0x8, 0x29800022u); // st.w    r2, r1, 0
+
+    std::cout << "Starting simulation at PC = 0x"
+              << std::hex << ENTRY << std::dec << "\n";
+
+    try {
+        for (std::uint64_t step = 0; step < MAX_STEPS; ++step) {
+            cpu.step();
+
+            std::cout << "[step " << step + 1 << "] "
+                      << "PC=0x" << std::hex << cpu.getPC()
+                      << " r1=0x" << cpu.getReg(1)
+                      << " r2=" << std::dec << cpu.getReg(2)
+                      << "\n";
+
+            if (testDevice.halted()) {
+                std::cout << "Program halted with exit code "
+                          << testDevice.exitCode() << "\n";
+
+                if (testDevice.exitCode() == 0) {
+                    std::cout << "Simulation finished successfully.\n";
+                    return 0;
+                } else {
+                    std::cout << "Simulation finished with failure.\n";
+                    return 1;
+                }
+            }
+        }
+
+        std::cout << "Simulation stopped after reaching MAX_STEPS="
+                  << MAX_STEPS << "\n";
+        std::cout << "No halt signal observed.\n";
+        return 1;
+
+    } catch (const std::exception& e) {
+        std::cerr << "Simulation exception: " << e.what() << "\n";
+        cpu.dumpState();
+        return 1;
+    }
 }

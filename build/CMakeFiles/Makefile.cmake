@@ -47,4 +47,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/program_test_runner.dir/DependInfo.cmake"
   "CMakeFiles/test_cpu_state.dir/DependInfo.cmake"
   "CMakeFiles/test_testdevice.dir/DependInfo.cmake"
+  "CMakeFiles/test_runtime_loop.dir/DependInfo.cmake"
+  "CMakeFiles/test_runtime_halt.dir/DependInfo.cmake"
   )

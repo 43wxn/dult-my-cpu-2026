@@ -49,3 +49,13 @@ add_executable(test_testdevice
     ${CORE_SOURCES}
     tests/unit/test_testDevice.cpp
 )
+
+add_executable(test_runtime_loop
+    ${CORE_SOURCES}
+    tests/unit/test_runtime_loop.cpp
+)
+
+add_executable(test_runtime_halt
+    ${CORE_SOURCES}
+    tests/unit/test_runtime_halt.cpp
+)

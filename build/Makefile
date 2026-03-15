@@ -207,6 +207,32 @@ test_testdevice/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/build
 .PHONY : test_testdevice/fast
 
+#=============================================================================
+# Target rules for targets named test_runtime_loop
+
+# Build rule for target.
+test_runtime_loop: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_runtime_loop
+.PHONY : test_runtime_loop
+
+# fast build rule for target.
+test_runtime_loop/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/build
+.PHONY : test_runtime_loop/fast
+
+#=============================================================================
+# Target rules for targets named test_runtime_halt
+
+# Build rule for target.
+test_runtime_halt: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_runtime_halt
+.PHONY : test_runtime_halt
+
+# fast build rule for target.
+test_runtime_halt/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/build
+.PHONY : test_runtime_halt/fast
+
 src/Bus.o: src/Bus.cpp.o
 .PHONY : src/Bus.o
 
@@ -218,6 +244,8 @@ src/Bus.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Bus.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Bus.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Bus.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Bus.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Bus.cpp.o
 .PHONY : src/Bus.cpp.o
 
 src/Bus.i: src/Bus.cpp.i
@@ -231,6 +259,8 @@ src/Bus.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Bus.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Bus.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Bus.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Bus.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Bus.cpp.i
 .PHONY : src/Bus.cpp.i
 
 src/Bus.s: src/Bus.cpp.s
@@ -244,6 +274,8 @@ src/Bus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Bus.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Bus.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Bus.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Bus.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Bus.cpp.s
 .PHONY : src/Bus.cpp.s
 
 src/CPU.o: src/CPU.cpp.o
@@ -257,6 +289,8 @@ src/CPU.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/CPU.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/CPU.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/CPU.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/CPU.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/CPU.cpp.o
 .PHONY : src/CPU.cpp.o
 
 src/CPU.i: src/CPU.cpp.i
@@ -270,6 +304,8 @@ src/CPU.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/CPU.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/CPU.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/CPU.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/CPU.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/CPU.cpp.i
 .PHONY : src/CPU.cpp.i
 
 src/CPU.s: src/CPU.cpp.s
@@ -283,6 +319,8 @@ src/CPU.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/CPU.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/CPU.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/CPU.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/CPU.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/CPU.cpp.s
 .PHONY : src/CPU.cpp.s
 
 src/Memory.o: src/Memory.cpp.o
@@ -296,6 +334,8 @@ src/Memory.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Memory.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Memory.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Memory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Memory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Memory.cpp.o
 .PHONY : src/Memory.cpp.o
 
 src/Memory.i: src/Memory.cpp.i
@@ -309,6 +349,8 @@ src/Memory.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Memory.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Memory.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Memory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Memory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Memory.cpp.i
 .PHONY : src/Memory.cpp.i
 
 src/Memory.s: src/Memory.cpp.s
@@ -322,6 +364,8 @@ src/Memory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Memory.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Memory.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Memory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Memory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Memory.cpp.s
 .PHONY : src/Memory.cpp.s
 
 src/TestDevice.o: src/TestDevice.cpp.o
@@ -335,6 +379,8 @@ src/TestDevice.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/TestDevice.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/TestDevice.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/TestDevice.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/TestDevice.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/TestDevice.cpp.o
 .PHONY : src/TestDevice.cpp.o
 
 src/TestDevice.i: src/TestDevice.cpp.i
@@ -348,6 +394,8 @@ src/TestDevice.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/TestDevice.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/TestDevice.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/TestDevice.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/TestDevice.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/TestDevice.cpp.i
 .PHONY : src/TestDevice.cpp.i
 
 src/TestDevice.s: src/TestDevice.cpp.s
@@ -361,6 +409,8 @@ src/TestDevice.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/TestDevice.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/TestDevice.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/TestDevice.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/TestDevice.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/TestDevice.cpp.s
 .PHONY : src/TestDevice.cpp.s
 
 src/Timer.o: src/Timer.cpp.o
@@ -374,6 +424,8 @@ src/Timer.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Timer.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Timer.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Timer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Timer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Timer.cpp.o
 .PHONY : src/Timer.cpp.o
 
 src/Timer.i: src/Timer.cpp.i
@@ -387,6 +439,8 @@ src/Timer.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Timer.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Timer.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Timer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Timer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Timer.cpp.i
 .PHONY : src/Timer.cpp.i
 
 src/Timer.s: src/Timer.cpp.s
@@ -400,6 +454,8 @@ src/Timer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Timer.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Timer.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Timer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Timer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Timer.cpp.s
 .PHONY : src/Timer.cpp.s
 
 src/Uart.o: src/Uart.cpp.o
@@ -413,6 +469,8 @@ src/Uart.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Uart.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Uart.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Uart.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Uart.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Uart.cpp.o
 .PHONY : src/Uart.cpp.o
 
 src/Uart.i: src/Uart.cpp.i
@@ -426,6 +484,8 @@ src/Uart.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Uart.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Uart.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Uart.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Uart.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Uart.cpp.i
 .PHONY : src/Uart.cpp.i
 
 src/Uart.s: src/Uart.cpp.s
@@ -439,6 +499,8 @@ src/Uart.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/src/Uart.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_cpu_state.dir/build.make CMakeFiles/test_cpu_state.dir/src/Uart.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/src/Uart.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/src/Uart.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/src/Uart.cpp.s
 .PHONY : src/Uart.cpp.s
 
 src/simulator_main.o: src/simulator_main.cpp.o
@@ -585,6 +647,54 @@ tests/unit/test_mmu.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_mmu.dir/build.make CMakeFiles/test_mmu.dir/tests/unit/test_mmu.cpp.s
 .PHONY : tests/unit/test_mmu.cpp.s
 
+tests/unit/test_runtime_halt.o: tests/unit/test_runtime_halt.cpp.o
+.PHONY : tests/unit/test_runtime_halt.o
+
+# target to build an object file
+tests/unit/test_runtime_halt.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/tests/unit/test_runtime_halt.cpp.o
+.PHONY : tests/unit/test_runtime_halt.cpp.o
+
+tests/unit/test_runtime_halt.i: tests/unit/test_runtime_halt.cpp.i
+.PHONY : tests/unit/test_runtime_halt.i
+
+# target to preprocess a source file
+tests/unit/test_runtime_halt.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/tests/unit/test_runtime_halt.cpp.i
+.PHONY : tests/unit/test_runtime_halt.cpp.i
+
+tests/unit/test_runtime_halt.s: tests/unit/test_runtime_halt.cpp.s
+.PHONY : tests/unit/test_runtime_halt.s
+
+# target to generate assembly for a file
+tests/unit/test_runtime_halt.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_halt.dir/build.make CMakeFiles/test_runtime_halt.dir/tests/unit/test_runtime_halt.cpp.s
+.PHONY : tests/unit/test_runtime_halt.cpp.s
+
+tests/unit/test_runtime_loop.o: tests/unit/test_runtime_loop.cpp.o
+.PHONY : tests/unit/test_runtime_loop.o
+
+# target to build an object file
+tests/unit/test_runtime_loop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/tests/unit/test_runtime_loop.cpp.o
+.PHONY : tests/unit/test_runtime_loop.cpp.o
+
+tests/unit/test_runtime_loop.i: tests/unit/test_runtime_loop.cpp.i
+.PHONY : tests/unit/test_runtime_loop.i
+
+# target to preprocess a source file
+tests/unit/test_runtime_loop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/tests/unit/test_runtime_loop.cpp.i
+.PHONY : tests/unit/test_runtime_loop.cpp.i
+
+tests/unit/test_runtime_loop.s: tests/unit/test_runtime_loop.cpp.s
+.PHONY : tests/unit/test_runtime_loop.s
+
+# target to generate assembly for a file
+tests/unit/test_runtime_loop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_loop.dir/build.make CMakeFiles/test_runtime_loop.dir/tests/unit/test_runtime_loop.cpp.s
+.PHONY : tests/unit/test_runtime_loop.cpp.s
+
 tests/unit/test_testDevice.o: tests/unit/test_testDevice.cpp.o
 .PHONY : tests/unit/test_testDevice.o
 
@@ -623,6 +733,8 @@ help:
 	@echo "... test_cpu_state"
 	@echo "... test_memory"
 	@echo "... test_mmu"
+	@echo "... test_runtime_halt"
+	@echo "... test_runtime_loop"
 	@echo "... test_testdevice"
 	@echo "... src/Bus.o"
 	@echo "... src/Bus.i"
@@ -660,6 +772,12 @@ help:
 	@echo "... tests/unit/test_mmu.o"
 	@echo "... tests/unit/test_mmu.i"
 	@echo "... tests/unit/test_mmu.s"
+	@echo "... tests/unit/test_runtime_halt.o"
+	@echo "... tests/unit/test_runtime_halt.i"
+	@echo "... tests/unit/test_runtime_halt.s"
+	@echo "... tests/unit/test_runtime_loop.o"
+	@echo "... tests/unit/test_runtime_loop.i"
+	@echo "... tests/unit/test_runtime_loop.s"
 	@echo "... tests/unit/test_testDevice.o"
 	@echo "... tests/unit/test_testDevice.i"
 	@echo "... tests/unit/test_testDevice.s"

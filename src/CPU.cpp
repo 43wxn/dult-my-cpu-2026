@@ -85,7 +85,6 @@ void CPU::step()
         m_interrupt_pending = false;
         raise_exception(m_interrupt_code);
         enforceInvariants();
-        ++m_cycle_count;
         return;
     }
 
@@ -543,6 +542,7 @@ void CPU::step()
 
     // Enforce architectural invariants after executing the instruction.
     enforceInvariants();
+    ++m_cycle_count;
 }
 
 void CPU::enforceInvariants() noexcept
