@@ -1,0 +1,3 @@
+dummy ../programs/dummy.c
+add ../programs/add.c
+fib ../programs/fib.c
