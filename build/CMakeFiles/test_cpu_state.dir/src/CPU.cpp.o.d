@@ -1,4 +1,4 @@
-CMakeFiles/test_cpu_basic.dir/src/CPU.cpp.o: \
+CMakeFiles/test_cpu_state.dir/src/CPU.cpp.o: \
  /home/tian/architecture/src/CPU.cpp /usr/include/stdc-predef.h \
  /home/tian/architecture/include/CPU.h \
  /home/tian/architecture/include/Device.h /usr/include/c++/13/cstdint \
