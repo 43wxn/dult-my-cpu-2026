@@ -1,3 +1,8 @@
+#include <cstdint>
+#include <exception>
+#include <iostream>
+#include <string>
+
 #include "Bus.h"
 #include "CPU.h"
 #include "Memory.h"
@@ -5,11 +10,6 @@
 #include "TestDevice.h"
 #include "Timer.h"
 #include "Uart.h"
-
-#include <cstdint>
-#include <exception>
-#include <iostream>
-#include <string>
 
 using namespace loongarch;
 
@@ -44,28 +44,30 @@ int main(int argc, char* argv[]) {
         for (std::uint64_t step = 0; step < MAX_STEPS; ++step) {
             cpu.step();
 
-            std::cout << "[step " << step + 1 << "] "
+            std::cout << "[step " << (step + 1) << "] "
                       << "PC=0x" << std::hex << cpu.getPC()
                       << " r1=0x" << cpu.getReg(1)
                       << " r2=" << std::dec << cpu.getReg(2)
                       << "\n";
 
             if (testDevice.halted()) {
-                std::cout << "Program halted with exit code "
-                          << testDevice.exitCode() << "\n";
+                const std::uint32_t code = testDevice.exitCode();
 
-                if (testDevice.exitCode() == 0) {
+                std::cout << "Program halted with exit code " << code << "\n";
+
+                if (code == 0) {
+                    std::cout << "[RESULT] PASS\n";
                     std::cout << "Simulation finished successfully.\n";
                     return 0;
                 } else {
+                    std::cout << "[RESULT] FAIL (code=" << code << ")\n";
                     std::cout << "Simulation finished with failure.\n";
                     return 1;
                 }
             }
         }
 
-        std::cout << "Simulation stopped after reaching MAX_STEPS="
-                  << MAX_STEPS << "\n";
+        std::cout << "Simulation stopped after reaching MAX_STEPS=" << MAX_STEPS << "\n";
         std::cout << "No halt signal observed.\n";
         return 1;
 

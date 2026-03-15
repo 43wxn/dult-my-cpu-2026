@@ -73,6 +73,7 @@ all: CMakeFiles/test_testdevice.dir/all
 all: CMakeFiles/test_runtime_loop.dir/all
 all: CMakeFiles/test_runtime_halt.dir/all
 all: CMakeFiles/test_program_loader.dir/all
+all: CMakeFiles/test_runtime_protocol.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -90,6 +91,7 @@ clean: CMakeFiles/test_testdevice.dir/clean
 clean: CMakeFiles/test_runtime_loop.dir/clean
 clean: CMakeFiles/test_runtime_halt.dir/clean
 clean: CMakeFiles/test_program_loader.dir/clean
+clean: CMakeFiles/test_runtime_protocol.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -255,7 +257,7 @@ CMakeFiles/test_cpu_state.dir/clean:
 CMakeFiles/test_testdevice.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_testdevice.dir/build.make CMakeFiles/test_testdevice.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=75,76,77,78,79,80,81,82,83 "Built target test_testdevice"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=84,85,86,87,88,89,90,91,92 "Built target test_testdevice"
 .PHONY : CMakeFiles/test_testdevice.dir/all
 
 # Build rule for subdir invocation for target.
@@ -351,6 +353,32 @@ test_program_loader: CMakeFiles/test_program_loader.dir/rule
 CMakeFiles/test_program_loader.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader.dir/build.make CMakeFiles/test_program_loader.dir/clean
 .PHONY : CMakeFiles/test_program_loader.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_runtime_protocol.dir
+
+# All Build rule for target.
+CMakeFiles/test_runtime_protocol.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_protocol.dir/build.make CMakeFiles/test_runtime_protocol.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_protocol.dir/build.make CMakeFiles/test_runtime_protocol.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=75,76,77,78,79,80,81,82,83 "Built target test_runtime_protocol"
+.PHONY : CMakeFiles/test_runtime_protocol.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_runtime_protocol.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tian/architecture/build/CMakeFiles 9
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_runtime_protocol.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/tian/architecture/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_runtime_protocol.dir/rule
+
+# Convenience name for target.
+test_runtime_protocol: CMakeFiles/test_runtime_protocol.dir/rule
+.PHONY : test_runtime_protocol
+
+# clean rule for target.
+CMakeFiles/test_runtime_protocol.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_runtime_protocol.dir/build.make CMakeFiles/test_runtime_protocol.dir/clean
+.PHONY : CMakeFiles/test_runtime_protocol.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

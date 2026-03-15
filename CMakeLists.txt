@@ -65,3 +65,8 @@ add_executable(test_program_loader
     ${CORE_SOURCES}
     tests/unit/test_program_loader.cpp
 )
+
+add_executable(test_runtime_protocol
+    ${CORE_SOURCES}
+    tests/unit/test_runtime_protocol.cpp
+)
