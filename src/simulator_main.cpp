@@ -56,11 +56,11 @@ int main(int argc, char* argv[]) {
                 std::cout << "Program halted with exit code " << code << "\n";
 
                 if (code == 0) {
-                    std::cout << "[RESULT] PASS\n";
+                    std::cout << "[RESULT] PASS (goodtrap)\n";
                     std::cout << "Simulation finished successfully.\n";
                     return 0;
                 } else {
-                    std::cout << "[RESULT] FAIL (code=" << code << ")\n";
+                    std::cout << "[RESULT] FAIL (badtrap, code=" << code << ")\n";
                     std::cout << "Simulation finished with failure.\n";
                     return 1;
                 }

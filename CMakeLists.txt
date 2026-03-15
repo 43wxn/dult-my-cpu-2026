@@ -70,3 +70,8 @@ add_executable(test_runtime_protocol
     ${CORE_SOURCES}
     tests/unit/test_runtime_protocol.cpp
 )
+
+add_executable(test_trap_protocol
+    ${CORE_SOURCES}
+    tests/unit/test_trap_protocol.cpp
+)

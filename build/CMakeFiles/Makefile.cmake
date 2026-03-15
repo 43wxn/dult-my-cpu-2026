@@ -51,4 +51,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/test_runtime_halt.dir/DependInfo.cmake"
   "CMakeFiles/test_program_loader.dir/DependInfo.cmake"
   "CMakeFiles/test_runtime_protocol.dir/DependInfo.cmake"
+  "CMakeFiles/test_trap_protocol.dir/DependInfo.cmake"
   )
