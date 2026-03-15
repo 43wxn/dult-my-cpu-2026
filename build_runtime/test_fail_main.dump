@@ -1,0 +1,48 @@
+
+build_runtime/test_fail_main.elf:     file format elf32-loongarch
+
+
+Disassembly of section .text:
+
+00001000 <_start>:
+    1000:	140001e3 	lu12i.w     	$sp, 15
+    1004:	54005000 	bl          	80	# 1054 <main>
+    1008:	0280000c 	li.w        	$t0, 0
+    100c:	5800088c 	beq         	$a0, $t0, 8	# 1014 <pass_path>
+
+00001010 <fail_path>:
+    1010:	54002400 	bl          	36	# 1034 <badtrap>
+
+00001014 <pass_path>:
+    1014:	54000800 	bl          	8	# 101c <goodtrap>
+
+00001018 <hang>:
+    1018:	50000000 	b           	0	# 1018 <hang>
+
+0000101c <goodtrap>:
+    101c:	02bfc063 	addi.w      	$sp, $sp, -16
+    1020:	29803076 	st.w        	$fp, $sp, 12
+    1024:	02804076 	addi.w      	$fp, $sp, 16
+    1028:	143fffec 	lu12i.w     	$t0, 131071
+    102c:	29800180 	st.w        	$zero, $t0, 0
+    1030:	50000000 	b           	0	# 1030 <goodtrap+0x14>
+
+00001034 <badtrap>:
+    1034:	02bf8063 	addi.w      	$sp, $sp, -32
+    1038:	29807076 	st.w        	$fp, $sp, 28
+    103c:	02808076 	addi.w      	$fp, $sp, 32
+    1040:	29bfb2c4 	st.w        	$a0, $fp, -20
+    1044:	143fffec 	lu12i.w     	$t0, 131071
+    1048:	28bfb2cd 	ld.w        	$t1, $fp, -20
+    104c:	2980018d 	st.w        	$t1, $t0, 0
+    1050:	50000000 	b           	0	# 1050 <badtrap+0x1c>
+
+00001054 <main>:
+    1054:	02bfc063 	addi.w      	$sp, $sp, -16
+    1058:	29803076 	st.w        	$fp, $sp, 12
+    105c:	02804076 	addi.w      	$fp, $sp, 16
+    1060:	0280080c 	li.w        	$t0, 2
+    1064:	00150184 	move        	$a0, $t0
+    1068:	28803076 	ld.w        	$fp, $sp, 12
+    106c:	02804063 	addi.w      	$sp, $sp, 16
+    1070:	4c000020 	ret

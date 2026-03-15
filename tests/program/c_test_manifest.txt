@@ -1,0 +1,4 @@
+# name              source_path                     expected_exit_code
+test_main           programs/test_main.c            0
+test_fail_main      programs/test_fail_main.c       2
+test_check_fail     programs/test_check_fail.c      1
