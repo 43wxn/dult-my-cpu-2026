@@ -15,6 +15,7 @@ set(CORE_SOURCES
     src/Uart.cpp
     src/TestDevice.cpp
     src/ProgramLoader.cpp
+    src/SimulatorRunner.cpp
 )
 
 add_executable(mycpu_sim
@@ -38,6 +39,7 @@ add_executable(test_mmu
 )
 
 add_executable(program_test_runner
+    ${CORE_SOURCES}
     tests/program/program_test_runner.cpp
 )
 

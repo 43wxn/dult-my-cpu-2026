@@ -167,10 +167,24 @@ CMakeFiles/test_branch_programs.dir/src/ProgramLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_branch_programs.dir/src/ProgramLoader.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/ProgramLoader.cpp -o CMakeFiles/test_branch_programs.dir/src/ProgramLoader.cpp.s
 
+CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o: CMakeFiles/test_branch_programs.dir/flags.make
+CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o: /home/tian/architecture/src/SimulatorRunner.cpp
+CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o: CMakeFiles/test_branch_programs.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o -MF CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o.d -o CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o -c /home/tian/architecture/src/SimulatorRunner.cpp
+
+CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/SimulatorRunner.cpp > CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.i
+
+CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/SimulatorRunner.cpp -o CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.s
+
 CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o: CMakeFiles/test_branch_programs.dir/flags.make
 CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o: /home/tian/architecture/tests/unit/test_branch_programs.cpp
 CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o: CMakeFiles/test_branch_programs.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o -MF CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o.d -o CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o -c /home/tian/architecture/tests/unit/test_branch_programs.cpp
 
 CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.i: cmake_force
@@ -190,6 +204,7 @@ test_branch_programs_OBJECTS = \
 "CMakeFiles/test_branch_programs.dir/src/Uart.cpp.o" \
 "CMakeFiles/test_branch_programs.dir/src/TestDevice.cpp.o" \
 "CMakeFiles/test_branch_programs.dir/src/ProgramLoader.cpp.o" \
+"CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o" \
 "CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o"
 
 # External object files for target test_branch_programs
@@ -202,10 +217,11 @@ test_branch_programs: CMakeFiles/test_branch_programs.dir/src/Timer.cpp.o
 test_branch_programs: CMakeFiles/test_branch_programs.dir/src/Uart.cpp.o
 test_branch_programs: CMakeFiles/test_branch_programs.dir/src/TestDevice.cpp.o
 test_branch_programs: CMakeFiles/test_branch_programs.dir/src/ProgramLoader.cpp.o
+test_branch_programs: CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o
 test_branch_programs: CMakeFiles/test_branch_programs.dir/tests/unit/test_branch_programs.cpp.o
 test_branch_programs: CMakeFiles/test_branch_programs.dir/build.make
 test_branch_programs: CMakeFiles/test_branch_programs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable test_branch_programs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable test_branch_programs"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_branch_programs.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -69,10 +69,122 @@ include CMakeFiles/program_test_runner.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/program_test_runner.dir/flags.make
 
+CMakeFiles/program_test_runner.dir/src/Bus.cpp.o: CMakeFiles/program_test_runner.dir/flags.make
+CMakeFiles/program_test_runner.dir/src/Bus.cpp.o: /home/tian/architecture/src/Bus.cpp
+CMakeFiles/program_test_runner.dir/src/Bus.cpp.o: CMakeFiles/program_test_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/program_test_runner.dir/src/Bus.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/program_test_runner.dir/src/Bus.cpp.o -MF CMakeFiles/program_test_runner.dir/src/Bus.cpp.o.d -o CMakeFiles/program_test_runner.dir/src/Bus.cpp.o -c /home/tian/architecture/src/Bus.cpp
+
+CMakeFiles/program_test_runner.dir/src/Bus.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/program_test_runner.dir/src/Bus.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/Bus.cpp > CMakeFiles/program_test_runner.dir/src/Bus.cpp.i
+
+CMakeFiles/program_test_runner.dir/src/Bus.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/program_test_runner.dir/src/Bus.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/Bus.cpp -o CMakeFiles/program_test_runner.dir/src/Bus.cpp.s
+
+CMakeFiles/program_test_runner.dir/src/CPU.cpp.o: CMakeFiles/program_test_runner.dir/flags.make
+CMakeFiles/program_test_runner.dir/src/CPU.cpp.o: /home/tian/architecture/src/CPU.cpp
+CMakeFiles/program_test_runner.dir/src/CPU.cpp.o: CMakeFiles/program_test_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/program_test_runner.dir/src/CPU.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/program_test_runner.dir/src/CPU.cpp.o -MF CMakeFiles/program_test_runner.dir/src/CPU.cpp.o.d -o CMakeFiles/program_test_runner.dir/src/CPU.cpp.o -c /home/tian/architecture/src/CPU.cpp
+
+CMakeFiles/program_test_runner.dir/src/CPU.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/program_test_runner.dir/src/CPU.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/CPU.cpp > CMakeFiles/program_test_runner.dir/src/CPU.cpp.i
+
+CMakeFiles/program_test_runner.dir/src/CPU.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/program_test_runner.dir/src/CPU.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/CPU.cpp -o CMakeFiles/program_test_runner.dir/src/CPU.cpp.s
+
+CMakeFiles/program_test_runner.dir/src/Memory.cpp.o: CMakeFiles/program_test_runner.dir/flags.make
+CMakeFiles/program_test_runner.dir/src/Memory.cpp.o: /home/tian/architecture/src/Memory.cpp
+CMakeFiles/program_test_runner.dir/src/Memory.cpp.o: CMakeFiles/program_test_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/program_test_runner.dir/src/Memory.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/program_test_runner.dir/src/Memory.cpp.o -MF CMakeFiles/program_test_runner.dir/src/Memory.cpp.o.d -o CMakeFiles/program_test_runner.dir/src/Memory.cpp.o -c /home/tian/architecture/src/Memory.cpp
+
+CMakeFiles/program_test_runner.dir/src/Memory.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/program_test_runner.dir/src/Memory.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/Memory.cpp > CMakeFiles/program_test_runner.dir/src/Memory.cpp.i
+
+CMakeFiles/program_test_runner.dir/src/Memory.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/program_test_runner.dir/src/Memory.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/Memory.cpp -o CMakeFiles/program_test_runner.dir/src/Memory.cpp.s
+
+CMakeFiles/program_test_runner.dir/src/Timer.cpp.o: CMakeFiles/program_test_runner.dir/flags.make
+CMakeFiles/program_test_runner.dir/src/Timer.cpp.o: /home/tian/architecture/src/Timer.cpp
+CMakeFiles/program_test_runner.dir/src/Timer.cpp.o: CMakeFiles/program_test_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/program_test_runner.dir/src/Timer.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/program_test_runner.dir/src/Timer.cpp.o -MF CMakeFiles/program_test_runner.dir/src/Timer.cpp.o.d -o CMakeFiles/program_test_runner.dir/src/Timer.cpp.o -c /home/tian/architecture/src/Timer.cpp
+
+CMakeFiles/program_test_runner.dir/src/Timer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/program_test_runner.dir/src/Timer.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/Timer.cpp > CMakeFiles/program_test_runner.dir/src/Timer.cpp.i
+
+CMakeFiles/program_test_runner.dir/src/Timer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/program_test_runner.dir/src/Timer.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/Timer.cpp -o CMakeFiles/program_test_runner.dir/src/Timer.cpp.s
+
+CMakeFiles/program_test_runner.dir/src/Uart.cpp.o: CMakeFiles/program_test_runner.dir/flags.make
+CMakeFiles/program_test_runner.dir/src/Uart.cpp.o: /home/tian/architecture/src/Uart.cpp
+CMakeFiles/program_test_runner.dir/src/Uart.cpp.o: CMakeFiles/program_test_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/program_test_runner.dir/src/Uart.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/program_test_runner.dir/src/Uart.cpp.o -MF CMakeFiles/program_test_runner.dir/src/Uart.cpp.o.d -o CMakeFiles/program_test_runner.dir/src/Uart.cpp.o -c /home/tian/architecture/src/Uart.cpp
+
+CMakeFiles/program_test_runner.dir/src/Uart.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/program_test_runner.dir/src/Uart.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/Uart.cpp > CMakeFiles/program_test_runner.dir/src/Uart.cpp.i
+
+CMakeFiles/program_test_runner.dir/src/Uart.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/program_test_runner.dir/src/Uart.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/Uart.cpp -o CMakeFiles/program_test_runner.dir/src/Uart.cpp.s
+
+CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.o: CMakeFiles/program_test_runner.dir/flags.make
+CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.o: /home/tian/architecture/src/TestDevice.cpp
+CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.o: CMakeFiles/program_test_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.o -MF CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.o.d -o CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.o -c /home/tian/architecture/src/TestDevice.cpp
+
+CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/TestDevice.cpp > CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.i
+
+CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/TestDevice.cpp -o CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.s
+
+CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.o: CMakeFiles/program_test_runner.dir/flags.make
+CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.o: /home/tian/architecture/src/ProgramLoader.cpp
+CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.o: CMakeFiles/program_test_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.o -MF CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.o.d -o CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.o -c /home/tian/architecture/src/ProgramLoader.cpp
+
+CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/ProgramLoader.cpp > CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.i
+
+CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/ProgramLoader.cpp -o CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.s
+
+CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.o: CMakeFiles/program_test_runner.dir/flags.make
+CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.o: /home/tian/architecture/src/SimulatorRunner.cpp
+CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.o: CMakeFiles/program_test_runner.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.o -MF CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.o.d -o CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.o -c /home/tian/architecture/src/SimulatorRunner.cpp
+
+CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/SimulatorRunner.cpp > CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.i
+
+CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/SimulatorRunner.cpp -o CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.s
+
 CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o: CMakeFiles/program_test_runner.dir/flags.make
 CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o: /home/tian/architecture/tests/program/program_test_runner.cpp
 CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o: CMakeFiles/program_test_runner.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o -MF CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o.d -o CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o -c /home/tian/architecture/tests/program/program_test_runner.cpp
 
 CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.i: cmake_force
@@ -85,15 +197,31 @@ CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.s: cmak
 
 # Object files for target program_test_runner
 program_test_runner_OBJECTS = \
+"CMakeFiles/program_test_runner.dir/src/Bus.cpp.o" \
+"CMakeFiles/program_test_runner.dir/src/CPU.cpp.o" \
+"CMakeFiles/program_test_runner.dir/src/Memory.cpp.o" \
+"CMakeFiles/program_test_runner.dir/src/Timer.cpp.o" \
+"CMakeFiles/program_test_runner.dir/src/Uart.cpp.o" \
+"CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.o" \
+"CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.o" \
+"CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.o" \
 "CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o"
 
 # External object files for target program_test_runner
 program_test_runner_EXTERNAL_OBJECTS =
 
+program_test_runner: CMakeFiles/program_test_runner.dir/src/Bus.cpp.o
+program_test_runner: CMakeFiles/program_test_runner.dir/src/CPU.cpp.o
+program_test_runner: CMakeFiles/program_test_runner.dir/src/Memory.cpp.o
+program_test_runner: CMakeFiles/program_test_runner.dir/src/Timer.cpp.o
+program_test_runner: CMakeFiles/program_test_runner.dir/src/Uart.cpp.o
+program_test_runner: CMakeFiles/program_test_runner.dir/src/TestDevice.cpp.o
+program_test_runner: CMakeFiles/program_test_runner.dir/src/ProgramLoader.cpp.o
+program_test_runner: CMakeFiles/program_test_runner.dir/src/SimulatorRunner.cpp.o
 program_test_runner: CMakeFiles/program_test_runner.dir/tests/program/program_test_runner.cpp.o
 program_test_runner: CMakeFiles/program_test_runner.dir/build.make
 program_test_runner: CMakeFiles/program_test_runner.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable program_test_runner"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable program_test_runner"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/program_test_runner.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -167,10 +167,24 @@ CMakeFiles/test_runtime_protocol.dir/src/ProgramLoader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_runtime_protocol.dir/src/ProgramLoader.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/ProgramLoader.cpp -o CMakeFiles/test_runtime_protocol.dir/src/ProgramLoader.cpp.s
 
+CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o: CMakeFiles/test_runtime_protocol.dir/flags.make
+CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o: /home/tian/architecture/src/SimulatorRunner.cpp
+CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o: CMakeFiles/test_runtime_protocol.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o -MF CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o.d -o CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o -c /home/tian/architecture/src/SimulatorRunner.cpp
+
+CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tian/architecture/src/SimulatorRunner.cpp > CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.i
+
+CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tian/architecture/src/SimulatorRunner.cpp -o CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.s
+
 CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o: CMakeFiles/test_runtime_protocol.dir/flags.make
 CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o: /home/tian/architecture/tests/unit/test_runtime_protocol.cpp
 CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o: CMakeFiles/test_runtime_protocol.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o -MF CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o.d -o CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o -c /home/tian/architecture/tests/unit/test_runtime_protocol.cpp
 
 CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.i: cmake_force
@@ -190,6 +204,7 @@ test_runtime_protocol_OBJECTS = \
 "CMakeFiles/test_runtime_protocol.dir/src/Uart.cpp.o" \
 "CMakeFiles/test_runtime_protocol.dir/src/TestDevice.cpp.o" \
 "CMakeFiles/test_runtime_protocol.dir/src/ProgramLoader.cpp.o" \
+"CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o" \
 "CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o"
 
 # External object files for target test_runtime_protocol
@@ -202,10 +217,11 @@ test_runtime_protocol: CMakeFiles/test_runtime_protocol.dir/src/Timer.cpp.o
 test_runtime_protocol: CMakeFiles/test_runtime_protocol.dir/src/Uart.cpp.o
 test_runtime_protocol: CMakeFiles/test_runtime_protocol.dir/src/TestDevice.cpp.o
 test_runtime_protocol: CMakeFiles/test_runtime_protocol.dir/src/ProgramLoader.cpp.o
+test_runtime_protocol: CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o
 test_runtime_protocol: CMakeFiles/test_runtime_protocol.dir/tests/unit/test_runtime_protocol.cpp.o
 test_runtime_protocol: CMakeFiles/test_runtime_protocol.dir/build.make
 test_runtime_protocol: CMakeFiles/test_runtime_protocol.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable test_runtime_protocol"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tian/architecture/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable test_runtime_protocol"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_runtime_protocol.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/tian/architecture/src/CPU.cpp" "CMakeFiles/test_runtime_protocol.dir/src/CPU.cpp.o" "gcc" "CMakeFiles/test_runtime_protocol.dir/src/CPU.cpp.o.d"
   "/home/tian/architecture/src/Memory.cpp" "CMakeFiles/test_runtime_protocol.dir/src/Memory.cpp.o" "gcc" "CMakeFiles/test_runtime_protocol.dir/src/Memory.cpp.o.d"
   "/home/tian/architecture/src/ProgramLoader.cpp" "CMakeFiles/test_runtime_protocol.dir/src/ProgramLoader.cpp.o" "gcc" "CMakeFiles/test_runtime_protocol.dir/src/ProgramLoader.cpp.o.d"
+  "/home/tian/architecture/src/SimulatorRunner.cpp" "CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o" "gcc" "CMakeFiles/test_runtime_protocol.dir/src/SimulatorRunner.cpp.o.d"
   "/home/tian/architecture/src/TestDevice.cpp" "CMakeFiles/test_runtime_protocol.dir/src/TestDevice.cpp.o" "gcc" "CMakeFiles/test_runtime_protocol.dir/src/TestDevice.cpp.o.d"
   "/home/tian/architecture/src/Timer.cpp" "CMakeFiles/test_runtime_protocol.dir/src/Timer.cpp.o" "gcc" "CMakeFiles/test_runtime_protocol.dir/src/Timer.cpp.o.d"
   "/home/tian/architecture/src/Uart.cpp" "CMakeFiles/test_runtime_protocol.dir/src/Uart.cpp.o" "gcc" "CMakeFiles/test_runtime_protocol.dir/src/Uart.cpp.o.d"

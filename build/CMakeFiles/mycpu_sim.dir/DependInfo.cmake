@@ -12,6 +12,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/tian/architecture/src/CPU.cpp" "CMakeFiles/mycpu_sim.dir/src/CPU.cpp.o" "gcc" "CMakeFiles/mycpu_sim.dir/src/CPU.cpp.o.d"
   "/home/tian/architecture/src/Memory.cpp" "CMakeFiles/mycpu_sim.dir/src/Memory.cpp.o" "gcc" "CMakeFiles/mycpu_sim.dir/src/Memory.cpp.o.d"
   "/home/tian/architecture/src/ProgramLoader.cpp" "CMakeFiles/mycpu_sim.dir/src/ProgramLoader.cpp.o" "gcc" "CMakeFiles/mycpu_sim.dir/src/ProgramLoader.cpp.o.d"
+  "/home/tian/architecture/src/SimulatorRunner.cpp" "CMakeFiles/mycpu_sim.dir/src/SimulatorRunner.cpp.o" "gcc" "CMakeFiles/mycpu_sim.dir/src/SimulatorRunner.cpp.o.d"
   "/home/tian/architecture/src/TestDevice.cpp" "CMakeFiles/mycpu_sim.dir/src/TestDevice.cpp.o" "gcc" "CMakeFiles/mycpu_sim.dir/src/TestDevice.cpp.o.d"
   "/home/tian/architecture/src/Timer.cpp" "CMakeFiles/mycpu_sim.dir/src/Timer.cpp.o" "gcc" "CMakeFiles/mycpu_sim.dir/src/Timer.cpp.o.d"
   "/home/tian/architecture/src/Uart.cpp" "CMakeFiles/mycpu_sim.dir/src/Uart.cpp.o" "gcc" "CMakeFiles/mycpu_sim.dir/src/Uart.cpp.o.d"

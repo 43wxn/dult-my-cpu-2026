@@ -7,6 +7,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/test_trap_protocol.dir/src/Memory.cpp.o.d"
   "CMakeFiles/test_trap_protocol.dir/src/ProgramLoader.cpp.o"
   "CMakeFiles/test_trap_protocol.dir/src/ProgramLoader.cpp.o.d"
+  "CMakeFiles/test_trap_protocol.dir/src/SimulatorRunner.cpp.o"
+  "CMakeFiles/test_trap_protocol.dir/src/SimulatorRunner.cpp.o.d"
   "CMakeFiles/test_trap_protocol.dir/src/TestDevice.cpp.o"
   "CMakeFiles/test_trap_protocol.dir/src/TestDevice.cpp.o.d"
   "CMakeFiles/test_trap_protocol.dir/src/Timer.cpp.o"
