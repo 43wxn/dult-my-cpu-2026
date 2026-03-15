@@ -428,25 +428,25 @@ void CPU::step()
                 static_cast<std::uint32_t>(sum));
     }
     // 2RI16 branch/jump: BEQ / BNE / BLT / BGE / JIRL / B / BL
-    else if (opc6 == OPC_BEQ ||
-             opc6 == OPC_BNE ||
-             opc6 == OPC_BLT ||
-             opc6 == OPC_BGE ||
+        // Branch / jump: BEQ / BNE / BLT / BGE / JIRL / B / BL
+    else if (opc6 == OPC_BEQ  ||
+             opc6 == OPC_BNE  ||
+             opc6 == OPC_BLT  ||
+             opc6 == OPC_BGE  ||
+             opc6 == OPC_BNEZ ||
              opc6 == OPC_JIRL ||
-             opc6 == OPC_B   ||
+             opc6 == OPC_B    ||
              opc6 == OPC_BL) {
 
-        const std::uint32_t oldPcPlus4 = m_pc;
+        const std::uint32_t oldPcPlus4 = curr_pc + 4U;
 
-        if (opc6 == OPC_BEQ || opc6 == OPC_BNE ||
+                if (opc6 == OPC_BEQ || opc6 == OPC_BNE ||
             opc6 == OPC_BLT || opc6 == OPC_BGE ||
-            opc6 == OPC_JIRL) {
+            opc6 == OPC_BNEZ || opc6 == OPC_JIRL) {
 
-            const std::uint32_t raw16 =
-                extract_bits(instr, 10u, 16u);
-            // left-shift 2, then sign-extend to 18-bit byte offset
+            const std::uint32_t raw16 = extract_bits(instr, 10u, 16u);
             const std::int32_t offsetBytes =
-                sign_extend<18>(raw16 << 2u);
+                static_cast<std::int32_t>(sign_extend<16>(raw16)) << 2;
 
             const std::uint32_t lhs = get_reg(m_regs, rj);
             const std::uint32_t rhs = get_reg(m_regs, rd);
@@ -460,21 +460,20 @@ void CPU::step()
                 take = (lhs != rhs);
                 break;
             case OPC_BLT: {
-                const std::int32_t sl =
-                    static_cast<std::int32_t>(lhs);
-                const std::int32_t sr =
-                    static_cast<std::int32_t>(rhs);
+                const std::int32_t sl = static_cast<std::int32_t>(lhs);
+                const std::int32_t sr = static_cast<std::int32_t>(rhs);
                 take = (sl < sr);
                 break;
             }
             case OPC_BGE: {
-                const std::int32_t sl =
-                    static_cast<std::int32_t>(lhs);
-                const std::int32_t sr =
-                    static_cast<std::int32_t>(rhs);
+                const std::int32_t sl = static_cast<std::int32_t>(lhs);
+                const std::int32_t sr = static_cast<std::int32_t>(rhs);
                 take = (sl >= sr);
                 break;
             }
+            case OPC_BNEZ:
+                take = (lhs != 0u);
+                break;
             case OPC_JIRL:
                 take = true;
                 break;
@@ -484,47 +483,34 @@ void CPU::step()
 
             if (take) {
                 if (opc6 == OPC_JIRL) {
-                    // rd = PC + 4
-                    set_reg(m_regs, rd, oldPcPlus4);
-                    const std::uint32_t base =
-                        get_reg(m_regs, rj);
-                    const std::int32_t sum =
-                        static_cast<std::int32_t>(base) +
-                        offsetBytes;
-                    m_pc = static_cast<std::uint32_t>(sum);
+                    const std::uint32_t base = get_reg(m_regs, rj);
+                    set_reg(m_regs, rd, curr_pc + 4U);
+                    m_pc = static_cast<std::uint32_t>(
+                        static_cast<std::int32_t>(base) + offsetBytes);
                 } else {
-                    const std::int32_t pcSigned =
-                        static_cast<std::int32_t>(m_pc);
-                    const std::int32_t target =
-                        pcSigned + offsetBytes;
-                    m_pc = static_cast<std::uint32_t>(target);
+                    m_pc = static_cast<std::uint32_t>(
+                        static_cast<std::int32_t>(curr_pc) + offsetBytes);
                 }
             }
         } else {
-            // B / BL: I26 offset relative to PC
-            const std::uint32_t low10 =
-                extract_bits(instr, 0u, 10u);
-            const std::uint32_t high16 =
-                extract_bits(instr, 10u, 16u);
-            const std::uint32_t raw26 =
-                (high16 << 10u) | low10;
+            // B / BL : 26-bit immediate, scaled by 4
+            const std::uint32_t low10  = extract_bits(instr, 0u, 10u);
+            const std::uint32_t high16 = extract_bits(instr, 10u, 16u);
 
-            // left-shift 2 -> 28-bit offset, sign-extend 28
-            const std::uint32_t shifted =
-                raw26 << 2u;
-            const std::int32_t offsetBytes =
-                sign_extend<28>(shifted);
+            // LoongArch B/BL immediate layout:
+            // offs[25:16] in bits[9:0], offs[15:0] in bits[25:10]
+            const std::uint32_t raw26  = (low10 << 16u) | high16;
+
+            const std::int32_t imm26 =
+                sign_extend<26>(raw26);
+            const std::int32_t offsetBytes = imm26 << 2;
 
             if (opc6 == OPC_BL) {
-                // r1 = PC + 4
-                set_reg(m_regs, 1u, oldPcPlus4);
+                set_reg(m_regs, 1u, curr_pc + 4U);
             }
 
-            const std::int32_t pcSigned =
-                static_cast<std::int32_t>(m_pc);
-            const std::int32_t target =
-                pcSigned + offsetBytes;
-            m_pc = static_cast<std::uint32_t>(target);
+            m_pc = static_cast<std::uint32_t>(
+                static_cast<std::int32_t>(curr_pc) + offsetBytes);
         }
     }
     else {

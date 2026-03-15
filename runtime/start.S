@@ -5,25 +5,21 @@
     .extern badtrap
 
 _start:
-    # 初始化栈指针
-    lu12i.w    $sp, 0x0000F       # sp = 0x0000F000
+    # r3 = sp
+    lu12i.w    $r3, 0x0000f      # sp = 0x0000F000
 
     # 调用 main()
     bl         main
 
-    # main 返回值在 a0 ($r4)
-    # 若返回 0，则 goodtrap；否则 badtrap(a0)
-
-    addi.w     $t0, $zero, 0
-    beq        $a0, $t0, pass_path
+    # main 返回值在 r4
+    addi.w     $r12, $r0, 0
+    beq        $r4, $r12, pass_path
 
 fail_path:
-    # badtrap(a0)
-    jirl       $ra, badtrap, 0
+    bl         badtrap
 
 pass_path:
-    # goodtrap()
-    jirl       $ra, goodtrap, 0
+    bl         goodtrap
 
 hang:
     b          hang

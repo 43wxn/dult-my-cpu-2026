@@ -13,5 +13,6 @@
 /home/tian/architecture/build/CMakeFiles/test_branch_programs.dir
 /home/tian/architecture/build/CMakeFiles/test_load_store_programs.dir
 /home/tian/architecture/build/CMakeFiles/test_array_programs.dir
+/home/tian/architecture/build/CMakeFiles/test_program_loader_bin.dir
 /home/tian/architecture/build/CMakeFiles/edit_cache.dir
 /home/tian/architecture/build/CMakeFiles/rebuild_cache.dir

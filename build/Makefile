@@ -311,6 +311,19 @@ test_array_programs/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/build
 .PHONY : test_array_programs/fast
 
+#=============================================================================
+# Target rules for targets named test_program_loader_bin
+
+# Build rule for target.
+test_program_loader_bin: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_program_loader_bin
+.PHONY : test_program_loader_bin
+
+# fast build rule for target.
+test_program_loader_bin/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/build
+.PHONY : test_program_loader_bin/fast
+
 src/Bus.o: src/Bus.cpp.o
 .PHONY : src/Bus.o
 
@@ -331,6 +344,7 @@ src/Bus.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Bus.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Bus.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Bus.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Bus.cpp.o
 .PHONY : src/Bus.cpp.o
 
 src/Bus.i: src/Bus.cpp.i
@@ -353,6 +367,7 @@ src/Bus.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Bus.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Bus.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Bus.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Bus.cpp.i
 .PHONY : src/Bus.cpp.i
 
 src/Bus.s: src/Bus.cpp.s
@@ -375,6 +390,7 @@ src/Bus.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Bus.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Bus.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Bus.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Bus.cpp.s
 .PHONY : src/Bus.cpp.s
 
 src/CPU.o: src/CPU.cpp.o
@@ -397,6 +413,7 @@ src/CPU.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/CPU.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/CPU.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/CPU.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/CPU.cpp.o
 .PHONY : src/CPU.cpp.o
 
 src/CPU.i: src/CPU.cpp.i
@@ -419,6 +436,7 @@ src/CPU.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/CPU.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/CPU.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/CPU.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/CPU.cpp.i
 .PHONY : src/CPU.cpp.i
 
 src/CPU.s: src/CPU.cpp.s
@@ -441,6 +459,7 @@ src/CPU.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/CPU.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/CPU.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/CPU.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/CPU.cpp.s
 .PHONY : src/CPU.cpp.s
 
 src/Memory.o: src/Memory.cpp.o
@@ -463,6 +482,7 @@ src/Memory.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Memory.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Memory.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Memory.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Memory.cpp.o
 .PHONY : src/Memory.cpp.o
 
 src/Memory.i: src/Memory.cpp.i
@@ -485,6 +505,7 @@ src/Memory.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Memory.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Memory.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Memory.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Memory.cpp.i
 .PHONY : src/Memory.cpp.i
 
 src/Memory.s: src/Memory.cpp.s
@@ -507,6 +528,7 @@ src/Memory.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Memory.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Memory.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Memory.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Memory.cpp.s
 .PHONY : src/Memory.cpp.s
 
 src/ProgramLoader.o: src/ProgramLoader.cpp.o
@@ -529,6 +551,7 @@ src/ProgramLoader.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/ProgramLoader.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/ProgramLoader.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/ProgramLoader.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/ProgramLoader.cpp.o
 .PHONY : src/ProgramLoader.cpp.o
 
 src/ProgramLoader.i: src/ProgramLoader.cpp.i
@@ -551,6 +574,7 @@ src/ProgramLoader.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/ProgramLoader.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/ProgramLoader.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/ProgramLoader.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/ProgramLoader.cpp.i
 .PHONY : src/ProgramLoader.cpp.i
 
 src/ProgramLoader.s: src/ProgramLoader.cpp.s
@@ -573,6 +597,7 @@ src/ProgramLoader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/ProgramLoader.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/ProgramLoader.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/ProgramLoader.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/ProgramLoader.cpp.s
 .PHONY : src/ProgramLoader.cpp.s
 
 src/SimulatorRunner.o: src/SimulatorRunner.cpp.o
@@ -595,6 +620,7 @@ src/SimulatorRunner.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/SimulatorRunner.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/SimulatorRunner.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/SimulatorRunner.cpp.o
 .PHONY : src/SimulatorRunner.cpp.o
 
 src/SimulatorRunner.i: src/SimulatorRunner.cpp.i
@@ -617,6 +643,7 @@ src/SimulatorRunner.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/SimulatorRunner.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/SimulatorRunner.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/SimulatorRunner.cpp.i
 .PHONY : src/SimulatorRunner.cpp.i
 
 src/SimulatorRunner.s: src/SimulatorRunner.cpp.s
@@ -639,6 +666,7 @@ src/SimulatorRunner.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/SimulatorRunner.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/SimulatorRunner.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/SimulatorRunner.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/SimulatorRunner.cpp.s
 .PHONY : src/SimulatorRunner.cpp.s
 
 src/TestDevice.o: src/TestDevice.cpp.o
@@ -661,6 +689,7 @@ src/TestDevice.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/TestDevice.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/TestDevice.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/TestDevice.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/TestDevice.cpp.o
 .PHONY : src/TestDevice.cpp.o
 
 src/TestDevice.i: src/TestDevice.cpp.i
@@ -683,6 +712,7 @@ src/TestDevice.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/TestDevice.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/TestDevice.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/TestDevice.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/TestDevice.cpp.i
 .PHONY : src/TestDevice.cpp.i
 
 src/TestDevice.s: src/TestDevice.cpp.s
@@ -705,6 +735,7 @@ src/TestDevice.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/TestDevice.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/TestDevice.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/TestDevice.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/TestDevice.cpp.s
 .PHONY : src/TestDevice.cpp.s
 
 src/Timer.o: src/Timer.cpp.o
@@ -727,6 +758,7 @@ src/Timer.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Timer.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Timer.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Timer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Timer.cpp.o
 .PHONY : src/Timer.cpp.o
 
 src/Timer.i: src/Timer.cpp.i
@@ -749,6 +781,7 @@ src/Timer.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Timer.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Timer.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Timer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Timer.cpp.i
 .PHONY : src/Timer.cpp.i
 
 src/Timer.s: src/Timer.cpp.s
@@ -771,6 +804,7 @@ src/Timer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Timer.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Timer.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Timer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Timer.cpp.s
 .PHONY : src/Timer.cpp.s
 
 src/Uart.o: src/Uart.cpp.o
@@ -793,6 +827,7 @@ src/Uart.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Uart.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Uart.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Uart.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Uart.cpp.o
 .PHONY : src/Uart.cpp.o
 
 src/Uart.i: src/Uart.cpp.i
@@ -815,6 +850,7 @@ src/Uart.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Uart.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Uart.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Uart.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Uart.cpp.i
 .PHONY : src/Uart.cpp.i
 
 src/Uart.s: src/Uart.cpp.s
@@ -837,6 +873,7 @@ src/Uart.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_branch_programs.dir/build.make CMakeFiles/test_branch_programs.dir/src/Uart.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_load_store_programs.dir/build.make CMakeFiles/test_load_store_programs.dir/src/Uart.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_array_programs.dir/build.make CMakeFiles/test_array_programs.dir/src/Uart.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/src/Uart.cpp.s
 .PHONY : src/Uart.cpp.s
 
 src/simulator_main.o: src/simulator_main.cpp.o
@@ -1079,6 +1116,30 @@ tests/unit/test_program_loader.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader.dir/build.make CMakeFiles/test_program_loader.dir/tests/unit/test_program_loader.cpp.s
 .PHONY : tests/unit/test_program_loader.cpp.s
 
+tests/unit/test_program_loader_bin.o: tests/unit/test_program_loader_bin.cpp.o
+.PHONY : tests/unit/test_program_loader_bin.o
+
+# target to build an object file
+tests/unit/test_program_loader_bin.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/tests/unit/test_program_loader_bin.cpp.o
+.PHONY : tests/unit/test_program_loader_bin.cpp.o
+
+tests/unit/test_program_loader_bin.i: tests/unit/test_program_loader_bin.cpp.i
+.PHONY : tests/unit/test_program_loader_bin.i
+
+# target to preprocess a source file
+tests/unit/test_program_loader_bin.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/tests/unit/test_program_loader_bin.cpp.i
+.PHONY : tests/unit/test_program_loader_bin.cpp.i
+
+tests/unit/test_program_loader_bin.s: tests/unit/test_program_loader_bin.cpp.s
+.PHONY : tests/unit/test_program_loader_bin.s
+
+# target to generate assembly for a file
+tests/unit/test_program_loader_bin.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_program_loader_bin.dir/build.make CMakeFiles/test_program_loader_bin.dir/tests/unit/test_program_loader_bin.cpp.s
+.PHONY : tests/unit/test_program_loader_bin.cpp.s
+
 tests/unit/test_runtime_halt.o: tests/unit/test_runtime_halt.cpp.o
 .PHONY : tests/unit/test_runtime_halt.o
 
@@ -1217,6 +1278,7 @@ help:
 	@echo "... test_memory"
 	@echo "... test_mmu"
 	@echo "... test_program_loader"
+	@echo "... test_program_loader_bin"
 	@echo "... test_runtime_halt"
 	@echo "... test_runtime_loop"
 	@echo "... test_runtime_protocol"
@@ -1276,6 +1338,9 @@ help:
 	@echo "... tests/unit/test_program_loader.o"
 	@echo "... tests/unit/test_program_loader.i"
 	@echo "... tests/unit/test_program_loader.s"
+	@echo "... tests/unit/test_program_loader_bin.o"
+	@echo "... tests/unit/test_program_loader_bin.i"
+	@echo "... tests/unit/test_program_loader_bin.s"
 	@echo "... tests/unit/test_runtime_halt.o"
 	@echo "... tests/unit/test_runtime_halt.i"
 	@echo "... tests/unit/test_runtime_halt.s"

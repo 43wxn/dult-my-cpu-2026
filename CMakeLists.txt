@@ -92,3 +92,8 @@ add_executable(test_array_programs
     ${CORE_SOURCES}
     tests/unit/test_array_programs.cpp
 )
+
+add_executable(test_program_loader_bin
+    ${CORE_SOURCES}
+    tests/unit/test_program_loader_bin.cpp
+)

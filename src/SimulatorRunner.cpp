@@ -31,7 +31,7 @@ RunResult runHexProgram(const std::string& program_path,
     cpu.reset(entry);
     testDevice.reset();
 
-    const std::uint32_t loaded = loader.loadHexFile(program_path, entry);
+    const std::size_t loaded = loader.loadFileAuto(program_path, entry);
     result.loaded = (loaded > 0);
 
     if (trace) {

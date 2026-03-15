@@ -157,6 +157,7 @@ constexpr inline std::int32_t decode_imm26(std::uint32_t instr) noexcept
 // ==========================
 
 // [Type: 2RI16] - Opcode [31:26]
+constexpr std::uint32_t OPC_BNEZ = 0x11;
 constexpr std::uint32_t OPC_JIRL = 0x13u;
 constexpr std::uint32_t OPC_B    = 0x14u;
 constexpr std::uint32_t OPC_BL   = 0x15u;

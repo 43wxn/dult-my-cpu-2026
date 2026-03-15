@@ -1,13 +1,13 @@
 #pragma once
 
-#include <stdint.h>
-
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+typedef unsigned int u32;
+
 void goodtrap(void);
-void badtrap(uint32_t code);
+void badtrap(u32 code);
 
 static inline void check(int cond) {
     if (!cond) {
