@@ -101,6 +101,12 @@ CPU 状态包括：
 
 这层测试非常适合做“改完 CPU 后的回归验收”。
 
+## 核心 
+1. 在programs文件夹下放入写好的c语言测试程序
+2. 将测试程序注册到test/program/c_test_manifest.txt中
+3. 在项目根目录运行./toolchain/run_c_tests.sh即可从终端输出中得到测试结果
+***温馨提示：可通过终端输出的step步与build_runtime/中的相应的.dump反汇编文件判断出是否有指令缺失。以及为什么改测试程序没有跑通***
+
 ---
 
 ## 3. 如何快速测试（给日常开发的最短路径）
@@ -121,7 +127,7 @@ cmake --build build -j
 先跑程序级回归：
 
 ```bash
-./build/program_test_runner
+./build/program_test_runner 			测试cpu各项功能是否正常
 ```
 
 你会看到每个程序的 `[PASS]/[FAIL]` 和最终汇总。
