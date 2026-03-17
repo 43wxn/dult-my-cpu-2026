@@ -7,6 +7,14 @@
 #include "Uart.h"
 #include "test_framework.h"
 
+/*
+ * 运行判定说明（Runtime 退出路径模块）：
+ * 1) [CHECK] 显示在 MAX_STEPS 内 halted=true；
+ * 2) [CHECK] 显示 exitCode=0；
+ * 3) [CHECK] 显示关键寄存器值 r1=0x1FFFF000、r2=0；
+ * 4) 最后一行 [PASS]。
+ * 原因：说明程序成功执行到写 TestDevice 的退出路径，且写入数据正确。
+ */
 using namespace loongarch;
 
 int main() {
@@ -23,9 +31,9 @@ int main() {
     cpu.reset(ENTRY);
     testDevice.reset();
 
-    mem.write32(ENTRY + 0x0, 0x143FFFE1u); // lu12i.w r1, 0x1FFFF
-    mem.write32(ENTRY + 0x4, 0x02800002u); // addi.w  r2, r0, 0
-    mem.write32(ENTRY + 0x8, 0x29800022u); // st.w    r2, r1, 0
+    mem.write32(ENTRY + 0x0, 0x143FFFE1u); // lu12i.w：将高 20 位立即数写入 r1
+    mem.write32(ENTRY + 0x4, 0x02800002u); // addi.w：r2 = r0 + 0
+    mem.write32(ENTRY + 0x8, 0x29800022u); // st.w：将 r2 写入 [r1+0]（触发 TestDevice 退出）
 
     bool halted = false;
     for (std::uint64_t i = 0; i < MAX_STEPS; ++i) {

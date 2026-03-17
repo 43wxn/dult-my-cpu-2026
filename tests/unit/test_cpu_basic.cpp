@@ -5,6 +5,13 @@
 #include "Uart.h"
 #include "test_framework.h"
 
+/*
+ * 运行判定说明（CPU 基础执行模块）：
+ * 1) 先看到 [INFO] 中的初始化/写指令/step 前后状态日志；
+ * 2) 再看到 [CHECK] 断言 r1=42 且 PC=0x1004；
+ * 3) 最后一行 [PASS]。
+ * 原因：说明 CPU 能正确取指并执行 ADDI.W，且顺序流控制（PC+4）正确。
+ */
 int main() {
     TEST_INFO("[CPU_BASIC] 初始化总线/内存/CPU");
     loongarch::Memory mem(16 * 1024 * 1024);

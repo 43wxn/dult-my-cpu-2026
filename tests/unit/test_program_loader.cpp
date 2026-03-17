@@ -2,6 +2,13 @@
 #include "ProgramLoader.h"
 #include "test_framework.h"
 
+/*
+ * 运行判定说明（HEX ProgramLoader 模块）：
+ * 1) [CHECK] 显示 loaded==3；
+ * 2) [CHECK] 显示入口后 3 条机器码与期望值一致；
+ * 3) 最后一行 [PASS]。
+ * 原因：证明 HEX 解析与按地址写入内存逻辑正确。
+ */
 using namespace loongarch;
 
 int main() {

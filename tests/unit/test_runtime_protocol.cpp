@@ -7,6 +7,13 @@
 #include "Uart.h"
 #include "test_framework.h"
 
+/*
+ * 运行判定说明（Runtime 协议集成模块）：
+ * 1) [INFO] 会打印程序路径、加载条数、逐 step 的 PC/寄存器/cycle/halted；
+ * 2) [CHECK] 显示 test_pass.hex -> exitCode=0，test_fail.hex -> exitCode=1；
+ * 3) 最后一行 [PASS]。
+ * 原因：说明运行时协议可区分通过/失败路径，并能正确回传退出码。
+ */
 using namespace loongarch;
 
 static int run_program(const char* path,

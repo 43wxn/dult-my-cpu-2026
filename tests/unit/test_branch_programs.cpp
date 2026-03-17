@@ -7,6 +7,13 @@
 #include "Uart.h"
 #include "test_framework.h"
 
+/*
+ * 运行判定说明（分支程序模块）：
+ * 1) [CHECK] 显示 branch_pass.hex 返回 0；
+ * 2) [CHECK] 显示 branch_fail.hex 返回 3；
+ * 3) 最后一行 [PASS]。
+ * 原因：说明分支控制流结果与预期一致，分支相关实现可区分正确/错误路径。
+ */
 using namespace loongarch;
 
 static std::uint32_t run_and_get_exit_code(const char* path)
