@@ -35,8 +35,10 @@ RunResult runHexProgram(const std::string &program_path, std::uint32_t entry,
 
     if (trace)
     {
-        std::cout << "Starting simulation at PC = 0x" << std::hex << entry << std::dec << "\n";
-        std::cout << "Loaded " << loaded << " instruction(s) from " << program_path << "\n";
+        std::cout << "[SIM] program=" << program_path << "\n";
+        std::cout << "[SIM] entry=0x" << std::hex << entry << std::dec
+                  << " max_steps=" << max_steps << "\n";
+        std::cout << "[SIM] loaded=" << loaded << " instruction(s)\n";
     }
 
     try
@@ -48,17 +50,35 @@ RunResult runHexProgram(const std::string &program_path, std::uint32_t entry,
 
             if (trace)
             {
-                std::cout << "[step " << step + 1 << "] " << "PC=0x" << std::hex << cpu.getPC()
-                          << " r1=0x" << cpu.getReg(1) << " r2=" << std::dec << cpu.getReg(2)
-                          << "\n";
+                std::cout << "[SIM][step " << step + 1 << "] "
+                          << "pc=0x" << std::hex << cpu.getPC()
+                          << " r1=0x" << cpu.getReg(1)
+                          << " r2=0x" << cpu.getReg(2)
+                          << std::dec << " cycles=" << cpu.getCycleCount()
+                          << " halted=" << testDevice.halted();
+                if (testDevice.halted())
+                {
+                    std::cout << " exit=" << testDevice.exitCode();
+                }
+                std::cout << "\n";
             }
 
             if (testDevice.halted())
             {
                 result.halted = true;
                 result.exit_code = testDevice.exitCode();
+                if (trace)
+                {
+                    std::cout << "[SIM] halted after " << result.steps
+                              << " step(s), exit_code=" << result.exit_code << "\n";
+                }
                 return result;
             }
+        }
+
+        if (trace)
+        {
+            std::cout << "[SIM] reached max_steps without halt, steps=" << result.steps << "\n";
         }
 
         return result;

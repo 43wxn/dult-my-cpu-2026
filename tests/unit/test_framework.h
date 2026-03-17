@@ -4,12 +4,20 @@
 
 #include <iostream>
 
+#define TEST_INFO(msg)                                                         \
+    do {                                                                       \
+        std::cout << "[INFO] " << msg << "\n";                              \
+    } while (0)
+
 #define EXPECT_TRUE(cond)                                                       \
     do {                                                                        \
         if (!(cond)) {                                                          \
             std::cerr << "[FAIL] " << __FILE__ << ":" << __LINE__               \
                       << " EXPECT_TRUE(" #cond ") failed\n";                    \
             return 1;                                                           \
+        } else {                                                                \
+            std::cout << "[CHECK] " << __FILE__ << ":" << __LINE__              \
+                      << " EXPECT_TRUE(" #cond ") == true\n";                   \
         }                                                                       \
     } while (0)
 
@@ -23,6 +31,10 @@
                       << "  actual   = " << _a << "\n"                          \
                       << "  expected = " << _e << "\n";                         \
             return 1;                                                           \
+        } else {                                                                \
+            std::cout << "[CHECK] " << __FILE__ << ":" << __LINE__              \
+                      << " EXPECT_EQ(" #actual ", " #expected ")"               \
+                      << " | actual=" << _a << " expected=" << _e << "\n";     \
         }                                                                       \
     } while (0)
 
@@ -38,6 +50,9 @@
             std::cerr << "[FAIL] " << __FILE__ << ":" << __LINE__               \
                       << " EXPECT_THROW(" #stmt ") failed\n";                   \
             return 1;                                                           \
+        } else {                                                                \
+            std::cout << "[CHECK] " << __FILE__ << ":" << __LINE__              \
+                      << " EXPECT_THROW(" #stmt ") succeeded\n";                \
         }                                                                       \
     } while (0)
 
