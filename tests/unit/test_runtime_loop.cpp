@@ -6,6 +6,14 @@
 #include "Uart.h"
 #include "test_framework.h"
 
+/*
+ * 运行判定说明（Runtime 单步循环模块）：
+ * 1) [CHECK] 显示执行一条 ADDI.W 后 r1=42；
+ * 2) [CHECK] 显示 PC 前进 4 字节、cycle=1；
+ * 3) [CHECK] 显示 testDevice.halted()==false；
+ * 4) 最后一行 [PASS]。
+ * 原因：说明最小执行循环可稳定推进，不会误触发退出设备。
+ */
 using namespace loongarch;
 
 int main() {

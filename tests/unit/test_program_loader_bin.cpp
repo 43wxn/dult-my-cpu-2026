@@ -2,6 +2,13 @@
 #include "ProgramLoader.h"
 #include "test_framework.h"
 
+/*
+ * 运行判定说明（BIN ProgramLoader 模块）：
+ * 1) [CHECK] 显示 loaded>0；
+ * 2) [CHECK] 显示入口前两个 32-bit 字均为非零；
+ * 3) 最后一行 [PASS]。
+ * 原因：证明 BIN 文件被成功读取并写入目标内存区域。
+ */
 using namespace loongarch;
 
 int main() {
