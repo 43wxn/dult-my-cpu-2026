@@ -13,6 +13,7 @@ static int run_program(const char* path,
                        std::uint32_t expected_exit_code,
                        bool expected_halt)
 {
+    TEST_INFO("[RUNTIME_PROTOCOL] 准备运行程序: " << path);
     Memory mem(16 * 1024 * 1024);
     Uart uart;
     Timer timer;
@@ -28,13 +29,22 @@ static int run_program(const char* path,
     testDevice.reset();
 
     const std::uint32_t loaded = loader.loadHexFile(path, ENTRY);
+    TEST_INFO("[RUNTIME_PROTOCOL] 加载指令数: " << loaded);
     EXPECT_TRUE(loaded > 0);
 
     bool halted = false;
     for (std::uint64_t i = 0; i < MAX_STEPS; ++i) {
+        TEST_INFO("[RUNTIME_PROTOCOL] step=" << i + 1 << " pc(before)=0x"
+                  << std::hex << cpu.getPC() << std::dec
+                  << " r1=" << cpu.getReg(1) << " r2=" << cpu.getReg(2));
         cpu.step();
+        TEST_INFO("[RUNTIME_PROTOCOL] step=" << i + 1 << " pc(after)=0x"
+                  << std::hex << cpu.getPC() << std::dec
+                  << " cycle=" << cpu.getCycleCount()
+                  << " halted=" << testDevice.halted());
         if (testDevice.halted()) {
             halted = true;
+            TEST_INFO("[RUNTIME_PROTOCOL] 程序触发退出，exitCode=" << testDevice.exitCode());
             break;
         }
     }
