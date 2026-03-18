@@ -97,3 +97,23 @@ add_executable(test_program_loader_bin
     ${CORE_SOURCES}
     tests/unit/test_program_loader_bin.cpp
 )
+
+add_executable(test_bus
+    ${CORE_SOURCES}
+    tests/unit/test_bus.cpp
+)
+
+add_executable(test_timer
+    ${CORE_SOURCES}
+    tests/unit/test_timer.cpp
+)
+
+add_executable(test_uart
+    ${CORE_SOURCES}
+    tests/unit/test_uart.cpp
+)
+
+add_executable(test_simulator_runner
+    ${CORE_SOURCES}
+    tests/unit/test_simulator_runner.cpp
+)
