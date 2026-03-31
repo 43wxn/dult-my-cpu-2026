@@ -65,6 +65,26 @@ SIM_MAX_STEPS=200000 ./toolchain/run_c_tests.sh
 
 ---
 
+## 3.1 一键测试并保存结果到 result 文件夹
+
+执行：
+
+```bash
+./toolchain/run_c_tests_to_result.sh
+```
+
+脚本会自动读取 `tests/program/c_test_manifest.txt`，并把每个程序的以下信息写入 `result/` 目录下带时间戳的文件（例如 `result/c_test_result_20260331_120102.txt`）：
+
+- 程序名；
+- PASS/FAIL；
+- 程序计算结果（return value）；
+- 期望值；
+- 程序执行时间（`runtime_ns`）。
+
+这样多次执行后，可按文件名时间戳区分每次测试结果。
+
+---
+
 ## 4. 单独运行某个 C 程序（定位问题最方便）
 
 ### 4.1 编译单个 C 程序
