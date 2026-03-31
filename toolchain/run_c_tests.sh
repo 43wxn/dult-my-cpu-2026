@@ -63,6 +63,8 @@ while read -r name src expected; do
     continue
   fi
 
+  echo "[RESULT] $(printf '%-16s' "$name") return_value=$actual"
+
   if [ "$actual" = "$expected" ]; then
     echo "[PASS] $(printf '%-16s' "$name") exit=$actual"
     passed=$((passed + 1))

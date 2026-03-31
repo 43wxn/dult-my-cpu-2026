@@ -26,6 +26,10 @@ int main(int argc, char *argv[])
     }
 
     std::cout << "Program halted with exit code " << result.exit_code << "\n";
+    std::cout << "Program return value: " << result.exit_code << "\n";
+    std::cout << "Program total runtime: " << result.total_runtime_ns
+              << " ns (" << (static_cast<double>(result.total_runtime_ns) / 1000000.0)
+              << " ms)\n";
 
     if (result.exit_code == 0)
     {
