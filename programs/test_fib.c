@@ -10,5 +10,5 @@ int fib(int n) {
 int main(void) {
     int x = fib(8);
     check(x == 21);
-    return 0;
+    return x;
 }

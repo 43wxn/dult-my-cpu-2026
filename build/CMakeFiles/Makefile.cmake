@@ -56,4 +56,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/test_load_store_programs.dir/DependInfo.cmake"
   "CMakeFiles/test_array_programs.dir/DependInfo.cmake"
   "CMakeFiles/test_program_loader_bin.dir/DependInfo.cmake"
+  "CMakeFiles/test_bus.dir/DependInfo.cmake"
+  "CMakeFiles/test_timer.dir/DependInfo.cmake"
+  "CMakeFiles/test_uart.dir/DependInfo.cmake"
+  "CMakeFiles/test_simulator_runner.dir/DependInfo.cmake"
   )
