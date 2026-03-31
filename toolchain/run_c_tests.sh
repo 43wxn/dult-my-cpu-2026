@@ -4,6 +4,7 @@ set -euo pipefail
 MANIFEST=${MANIFEST:-tests/program/c_test_manifest.txt}
 SIM=${SIM:-build/mycpu_sim}
 BUILD_SCRIPT=${BUILD_SCRIPT:-toolchain/build_c_program.sh}
+SIM_MAX_STEPS=${SIM_MAX_STEPS:-200000}
 
 if [ ! -f "$MANIFEST" ]; then
   echo "[ERROR] manifest not found: $MANIFEST"
@@ -49,26 +50,29 @@ while read -r name src expected; do
 
   echo "[INFO] running $bin_path"
 
+  run_log="/tmp/${basename}_run.log"
   set +e
-  output=$("$SIM" "$bin_path" 2>&1)
-  rc=$?
+  "$SIM" "$bin_path" "$SIM_MAX_STEPS" 2>&1 | tee "$run_log"
+  rc=${PIPESTATUS[0]}
   set -e
 
-  actual=$(echo "$output" | grep "Program halted with exit code" | awk '{print $6}' | tail -n 1 || true)
+  actual=$(grep "Program halted with exit code" "$run_log" | awk '{print $6}' | tail -n 1 || true)
 
   if [ -z "${actual:-}" ]; then
     echo "[FAIL] $(printf '%-16s' "$name") no exit code found"
-    echo "$output"
+    cat "$run_log"
     failed=$((failed + 1))
     continue
   fi
+
+  echo "[RESULT] $(printf '%-16s' "$name") return_value=$actual"
 
   if [ "$actual" = "$expected" ]; then
     echo "[PASS] $(printf '%-16s' "$name") exit=$actual"
     passed=$((passed + 1))
   else
     echo "[FAIL] $(printf '%-16s' "$name") expected=$expected got=$actual"
-    echo "$output"
+    cat "$run_log"
     failed=$((failed + 1))
   fi
 

@@ -9,6 +9,7 @@
 #include "Uart.h"
 
 #include <exception>
+#include <chrono>
 #include <iostream>
 
 namespace loongarch
@@ -43,10 +44,15 @@ RunResult runHexProgram(const std::string &program_path, std::uint32_t entry,
 
     try
     {
+        const auto run_start = std::chrono::steady_clock::now();
         for (std::uint64_t step = 0; step < max_steps; ++step)
         {
+            const auto step_start = std::chrono::steady_clock::now();
             cpu.step();
+            const auto step_end = std::chrono::steady_clock::now();
             result.steps = step + 1;
+            const auto step_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(step_end - step_start).count();
+            result.total_runtime_ns += static_cast<std::uint64_t>(step_ns);
 
             if (trace)
             {
@@ -55,7 +61,8 @@ RunResult runHexProgram(const std::string &program_path, std::uint32_t entry,
                           << " r1=0x" << cpu.getReg(1)
                           << " r2=0x" << cpu.getReg(2)
                           << std::dec << " cycles=" << cpu.getCycleCount()
-                          << " halted=" << testDevice.halted();
+                          << " halted=" << testDevice.halted()
+                          << " step_time_ns=" << step_ns;
                 if (testDevice.halted())
                 {
                     std::cout << " exit=" << testDevice.exitCode();
@@ -71,6 +78,9 @@ RunResult runHexProgram(const std::string &program_path, std::uint32_t entry,
                 {
                     std::cout << "[SIM] halted after " << result.steps
                               << " step(s), exit_code=" << result.exit_code << "\n";
+                    std::cout << "[SIM] total_runtime_ns=" << result.total_runtime_ns
+                              << " total_runtime_ms=" << (static_cast<double>(result.total_runtime_ns) / 1'000'000.0)
+                              << "\n";
                 }
                 return result;
             }
@@ -78,7 +88,11 @@ RunResult runHexProgram(const std::string &program_path, std::uint32_t entry,
 
         if (trace)
         {
+            const auto run_end = std::chrono::steady_clock::now();
+            const auto wall_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(run_end - run_start).count();
             std::cout << "[SIM] reached max_steps without halt, steps=" << result.steps << "\n";
+            std::cout << "[SIM] accumulated_step_runtime_ns=" << result.total_runtime_ns
+                      << " wall_runtime_ns=" << wall_ns << "\n";
         }
 
         return result;
