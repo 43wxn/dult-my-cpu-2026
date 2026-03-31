@@ -85,7 +85,7 @@ Disassembly of section .text:
     10f4:	0067818c 	bstrpick.w  	$t0, $t0, 0x7, 0x0
     10f8:	00150184 	move        	$a0, $t0
     10fc:	57ff5bff 	bl          	-168	# 1054 <check>
-    1100:	0015000c 	move        	$t0, $zero
+    1100:	28bfb2cc 	ld.w        	$t0, $fp, -20
     1104:	00150184 	move        	$a0, $t0
     1108:	28807061 	ld.w        	$ra, $sp, 28
     110c:	28806076 	ld.w        	$fp, $sp, 24

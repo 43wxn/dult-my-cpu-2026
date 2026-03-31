@@ -7,5 +7,5 @@ int add(int a, int b) {
 int main(void) {
     int x = add(19, 23);
     check(x == 42);
-    return 0;
+    return x;
 }
