@@ -101,6 +101,26 @@ CPU 状态包括：
 
 这层测试非常适合做“改完 CPU 后的回归验收”。
 
+
+### 2.3 自定义 `my_test/` C 源程序批量测试（结果落盘）
+
+项目不是 RISC-V，而是 **LoongArch32** 模拟器；C 程序会先交叉编译为 LoongArch32 指令，再由模拟器执行。
+
+若你在仓库根目录放了 `my_test/*.c`（例如 4 个 C 程序），可使用：
+
+```bash
+./toolchain/run_my_test_c_batch.sh
+```
+
+脚本行为：
+
+- 自动遍历 `my_test` 目录下所有 `.c`；
+- 编译得到 `build_runtime/<name>.bin` 后交给 `build/mycpu_sim` 执行；
+- 默认期望退出码为 `0`（goodtrap）；
+- 若存在 `my_test/expected_exit_codes.txt`，可按 `文件名 期望退出码` 覆盖；
+- 每次运行按 UTC 时间戳创建独立目录：`result/my_test_run_<timestamp>/`；
+- 保存每个测试程序的编译日志、运行日志，以及总表 `summary.csv`（含运行时间、PASS/FAIL、程序返回值等）。
+
 ## 核心 
 1. 在programs文件夹下放入写好的c语言测试程序
 2. 将测试程序注册到test/program/c_test_manifest.txt中
