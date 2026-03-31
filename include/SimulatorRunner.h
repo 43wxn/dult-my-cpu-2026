@@ -13,6 +13,7 @@ struct RunResult
     bool halted{false};
     std::uint32_t exit_code{0};
     std::uint64_t steps{0};
+    std::uint64_t total_runtime_ns{0};
 };
 
 RunResult runHexProgram(const std::string &program_path,
