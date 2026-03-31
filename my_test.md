@@ -42,12 +42,19 @@ cmake --build build -j
 ./toolchain/run_c_tests.sh
 ```
 
+如需提高步数预算（避免复杂程序在 300 步内未结束），可设置：
+
+```bash
+SIM_MAX_STEPS=200000 ./toolchain/run_c_tests.sh
+```
+
 脚本会按 `tests/program/c_test_manifest.txt` 中配置逐个：
 
 1. 编译 `programs/*.c`；
 2. 生成 `build_runtime/*.bin`；
 3. 调用 `build/mycpu_sim` 运行；
-4. 打印程序返回值与对比结果。
+4. 实时打印模拟器逐步执行日志（包含每步耗时）；
+5. 打印程序返回值与对比结果。
 
 你会在输出中看到类似内容：
 
